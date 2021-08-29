@@ -1,9 +1,287 @@
-#cluster-map {
-    width: 100%;
-    height: 500px;
+
+*{
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
 }
 
-#map {
-    width: 100%;
-    height: 300px;
+button{
+    font-family: 'Raleway', serif;
 }
+
+.done{
+    border: 1px solid green;
+}
+
+.items-list{
+    width: 20%;
+    display: inline-block;
+}
+
+@media screen and (min-width: 1101px) {
+.projects-list{
+    width: 28%;
+    display: inline-block;
+}
+}
+
+
+@media screen and (max-width: 1100px) {
+    .items-list{
+        width: 27%;
+    }
+    .tan-btn{
+        font-size: 12px;
+        padding: 13px 30px;
+    }
+    .dark-btn{
+        font-size: 12px;
+        padding: 13px 30px;
+    }
+    .projects-list{
+        list-style: none;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .items-list{
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .items-list{
+        width: 100%;
+        margin-left: -20px !important;
+    }
+    .tan-btn{
+        font-size: 12px;
+        padding: 13px 10px !important;
+    }
+    .dark-btn{
+        font-size: 12px;
+        padding: 13px 10px !important;
+    }
+    .projects-list{
+        width: 100%;
+        list-style: none;
+        margin-left: -20px !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+.navbar{
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17.5px;
+    font-weight: 400;
+    color: #636363;
+    background-color: white;
+    letter-spacing: 0.2px;
+    display: block;
+}
+
+.navbar-nav > li{
+    margin-left: 5px;
+    margin-right: 5px;
+  }  
+
+.navbar-nav .active  {
+      border-bottom: 1px solid black;
+  }
+
+@media only screen and (max-width: 800px) {
+  .navbar-collapse {
+    background: #F8F7F3;
+    margin: 0px -13px -7px -13px;
+    }
+}
+
+.navbar-brand{
+    margin-left: 2%;
+    margin-top: 0.3%;
+}
+
+.navbar-brand img {
+    max-width: 150px;
+}
+
+@media only screen and (min-width: 800px) {
+    .mobile-menu{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .norm-menu{
+        display: none;
+    }
+}
+
+.nav-img{
+    max-width: 200px;
+}
+
+.dropdown-item{
+    font-size: 14px;
+}
+
+.dropdown-item:focus{
+    background-color: #3f3f3f;
+}
+
+
+/*-------*/
+
+img:hover{
+    opacity: 80%;
+    transition: ease-in 0.1s;
+}
+
+
+.tag{
+    font-size: 8px;
+    font-family: 'Raleway'
+}
+
+.card-title{
+    font-size: 18px
+}
+
+.card-text{
+    font-size: 16px
+}
+
+
+.tan-btn{
+    background-color: #E9E7DC;
+    letter-spacing: 1.5px;
+    font-size: 14px;
+    padding: 17px 40px;
+}
+
+.dark-btn{
+    background-color: #4B4B4B;
+    letter-spacing: 1.5px;
+    font-size: 14px;
+    padding: 17px 40px;
+    color: white;
+}
+
+.dark-btn:hover{
+    color: grey !important;
+}
+
+.btn:hover{
+    color: white;
+}
+
+.boxed{
+    border-top: 1px solid hsla(0,0%,59%,.5);
+    border-bottom: 1px solid hsla(0,0%,59%,.5);
+}
+
+
+.carousel-control-prev{
+    background-color: none;
+}
+
+
+.add-item{
+    background-color: #E9E7DC;
+    letter-spacing: 1.5px;
+    font-size: 10px;
+    padding: 10px 15px;
+}
+
+.delete{
+    font-size: 10px;
+    background-color: rgb(228, 36, 36);
+    color: white;
+}
+
+.view{
+        background-color: #E9E7DC;
+        letter-spacing: 1.5px;
+        font-size: 13px;
+        padding: 10px 40px;
+}
+
+
+
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 100px;
+  width: 100px;
+  background-size: 100%, 100%;
+  border-radius: 50%;
+  background-image: none;
+  margin-top: 110%;
+  position: relative;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon:hover {
+    cursor: pointer;
+}
+
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 22px;
+  color: black;
+  margin-left: 20%;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 22px;
+  color: black;
+  margin-right: 20%;
+}
+
+
+.item-img {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+
+.order {
+    position: absolute;
+    top: 86%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black !important;
+    font-size: 12px;
+    font-family: 'Raleway';
+  }
+
+  .recommended{
+      font-size: 9px;
+      color: white;
+      margin-left: auto;
+      margin-right: auto;
+      align-items: center;
+      text-align: center;
+      font-family: 'Raleway';
+  }
+
+  .recommended-container{
+      background-color: #5FAD41;
+      border-radius: 10px;
+      color: white;
+      width: 54%;
+      padding: 1px 5px;
+      position: absolute;
+    top: 94%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+

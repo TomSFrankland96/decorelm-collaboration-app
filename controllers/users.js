@@ -11,12 +11,12 @@ module.exports.register = async (req, res, next) => {
         const registeredUser = await User.register(user, password);
         req.login(registeredUser, err => {
             if (err) return next(err);
-            req.flash('success', 'Welcome to BrethCamp!');
-            res.redirect('/campgrounds');
+            req.flash('success', 'Welcome to Decorelm!');
+            res.redirect('/projects');
         })
     } catch (e) {
         req.flash('error', e.message);
-        res.redirect('register');
+        res.redirect('/03121996');
     }
 }
 
@@ -26,7 +26,7 @@ module.exports.renderLogin = (req, res) => {
 
 module.exports.login = (req, res) => {
     req.flash('success', 'Welcome back!');
-    const redirectUrl = req.session.returnTo || '/campgrounds';
+    const redirectUrl = req.session.returnTo || '/projects';
     delete req.session.returnTo;
     res.redirect(redirectUrl);
 }
@@ -34,5 +34,5 @@ module.exports.login = (req, res) => {
 module.exports.logout = (req, res) => {
     req.logout();
     req.flash('success', "Goodbye!");
-    res.redirect('/campgrounds');
+    res.redirect('/projects');
 }

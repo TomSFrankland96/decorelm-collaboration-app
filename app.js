@@ -19,11 +19,15 @@ const helmet = require('helmet');
 const MongoDBStore = require('connect-mongo')(session);
 
 
-const userRoutes = require('./routes/users');
-const campgroundRoutes = require('./routes/campgrounds');
-const reviewRoutes = require('./routes/reviews');
 
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
+const userRoutes = require('./routes/users');
+const projectRoutes = require('./routes/projects');
+const roomRoutes = require('./routes/rooms');
+const itemCategoryRoutes = require('./routes/itemCategories');
+const itemRoutes = require('./routes/items');
+const commentRoutes = require('./routes/comments');
+
+const dbUrl = 'mongodb://localhost:27017/yelp-camp'; //process.env.DB_URL ||
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
@@ -96,18 +100,16 @@ const styleSrcUrls = [
     "https://fonts.googleapis.com/",
     "https://use.fontawesome.com/",
 ];
-const connectSrcUrls = [
-    "https://api.mapbox.com/",
-    "https://a.tiles.mapbox.com/",
-    "https://b.tiles.mapbox.com/",
-    "https://events.mapbox.com/",
+
+const fontSrcUrls = [
+    "https://fonts.googleapis.com",
+    "https://fonts.gstatic.com"
 ];
-const fontSrcUrls = [];
+
 app.use(
     helmet.contentSecurityPolicy({
         directives: {
             defaultSrc: [],
-            connectSrc: ["'self'", ...connectSrcUrls],
             scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
             styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
             workerSrc: ["'self'", "blob:"],
@@ -118,6 +120,7 @@ app.use(
                 "data:",
                 "https://res.cloudinary.com/drlgdeolb/", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT! 
                 "https://images.unsplash.com/",
+                "https://blog.decorelm.com"
             ],
             fontSrc: ["'self'", ...fontSrcUrls],
         },
@@ -140,8 +143,11 @@ app.use((req, res, next) => {
 
 
 app.use('/', userRoutes);
-app.use('/campgrounds', campgroundRoutes)
-app.use('/campgrounds/:id/reviews', reviewRoutes)
+app.use('/projects', projectRoutes);
+app.use('/projects/:id/rooms', roomRoutes);
+app.use('/projects/:id/rooms/:roomId/item-categories', itemCategoryRoutes);
+app.use('/projects/:id/rooms/:roomId/item-categories/:itemCategoryId/items', itemRoutes);
+app.use('/projects/:id/rooms/:roomId/comments', commentRoutes);
 
 
 app.get('/', (req, res) => {

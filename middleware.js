@@ -1,20 +1,22 @@
-const { campgroundSchema, reviewSchema } = require('./schemas.js');
+const { projectSchema, roomSchema, itemSchema, commentSchema, itemCategorySchema } = require('./schemas.js');
 const ExpressError = require('./utils/ExpressError');
-const Campground = require('./models/campground');
-const Review = require('./models/review');
+const Project = require('./models/project.js');
+const Room = require('./models/room.js');
+const Item = require('./models/item.js');
+const Comment = require('./models/comment.js');
+const ItemCategory = require('./models/itemCategory');
 
 module.exports.isLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {
         req.session.returnTo = req.originalUrl
         req.flash('error', 'You must be signed in first!');
-        return res.redirect('/login');
+        return res.redirect('/15111996');
     }
     next();
 }
 
-module.exports.validateCampground = (req, res, next) => {
-    const { error } = campgroundSchema.validate(req.body);
-    console.log(req.body);
+module.exports.validateProject = (req, res, next) => {
+    const { error } = projectSchema.validate(req.body);
     if (error) {
         const msg = error.details.map(el => el.message).join(',')
         throw new ExpressError(msg, 400)
@@ -25,27 +27,57 @@ module.exports.validateCampground = (req, res, next) => {
 
 module.exports.isAuthor = async (req, res, next) => {
     const { id } = req.params;
-    const campground = await Campground.findById(id);
-    if (!campground.author.equals(req.user._id)) {
+    const project = await Project.findById(id);
+    if (!project.author.equals(req.user._id)) {
         req.flash('error', 'You do not have permission to do that!');
-        return res.redirect(`/campgrounds/${id}`);
+        return res.redirect(`/projects/${id}`);
     }
     next();
 }
 
-module.exports.isReviewAuthor = async (req, res, next) => {
-    const { id, reviewId } = req.params;
-    const review = await Review.findById(reviewId);
-    if (!review.author.equals(req.user._id)) {
+module.exports.isRoomAuthor = async (req, res, next) => {
+    const { id, roomId } = req.params;
+    const room = await Room.findById(roomId);
+    if (!room.author.equals(req.user._id)) {
         req.flash('error', 'You do not have permission to do that!');
-        return res.redirect(`/campgrounds/${id}`);
+        return res.redirect(`/projects/${id}`);
     }
     next();
 }
 
-module.exports.validateReview = (req, res, next) => {
-    const { error } = reviewSchema.validate(req.body);
+module.exports.validateRoom = (req, res, next) => {
+    const { error } = roomSchema.validate(req.body);
     if (error) {
+        const msg = error.details.map(el => el.message).join(',')
+        throw new ExpressError(msg, 400)
+    } else {
+        next();
+    }
+}
+
+module.exports.validateItemCategory = (req, res, next) => {
+    const { error } = itemCategorySchema.validate(req.body);
+    if(error){
+        const msg = error.details.map(el => el.message).join(',')
+        throw new ExpressError(msg, 400)
+    } else {
+        next();
+    }
+}
+
+module.exports.validateItem = (req, res, next) => {
+    const { error } = itemSchema.validate(req.body);
+    if(error){
+        const msg = error.details.map(el => el.message).join(',')
+        throw new ExpressError(msg, 400)
+    } else {
+        next();
+    }
+}
+
+module.exports.validateComment = (req, res, next) => {
+    const { error } = commentSchema.validate(req.body);
+    if(error){
         const msg = error.details.map(el => el.message).join(',')
         throw new ExpressError(msg, 400)
     } else {

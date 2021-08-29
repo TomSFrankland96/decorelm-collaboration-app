@@ -1,0 +1,107 @@
+<% layout('layouts/boilerplate')%>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h3 class="card-title">
+            <%= project.title%>
+          </h3>
+          <p class="card-text">
+            <%= project.description%>
+          </p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item text-muted">
+            <%= project.location%>
+          </li>
+          <li class="list-group-item">Budget: £<%= project.price%>
+          </li>
+        </ul>
+        <% if( currentUser && project.author.equals(currentUser._id)) {%>
+          <div class="card-body">
+            <div class="d-flex bd-highlight mb-3 justify-content-between">
+              <a class="card-link" href="/projects/<%=project._id%>/edit">Edit</a>
+              <button type="button" class="btn delete" data-bs-toggle="modal" data-bs-target="#deleteProject">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                  <path fill-rule="evenodd"
+                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                </svg>
+              </button>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="deleteProject" tabindex="-1" aria-labelledby="deleteProjectLabel"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <h2>Are you sure you want to delete this project?</h2>
+                    <form class="d-inline" action="/projects/<%=project._id%>?_method=DELETE" method="POST">
+                      <button class="btn delete"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                          fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                          <path
+                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                          <path fill-rule="evenodd"
+                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                        </svg> Yes, delete</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% } %>
+            <div class="card-footer text-muted">
+              Designer: Kerry
+            </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <% if(currentUser){ %>
+        <h2>Add Rooms</h2>
+        <form action="/projects/<%= project._id %>/rooms" method="POST" class="mb-3 validated-form">
+          <div class="mb-3">
+            <label class="form-label" for="title">Room Name</label>
+            <textarea class="form-control" name="room[title]" id="title" cols="30" rows="1" required></textarea>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <button class="btn dark-btn">Submit</button>
+        </form>
+        <% } %>
+          <% for (let room of project.rooms) { %>
+            <% if(project.rooms < 1) { %> 
+                <p>Nothing here yet</p>
+              <% } else { %>
+            <div class="card mb-3 shadow">
+              <div class="card-body">
+                <span class="tag">ROOM</span>
+                <h4>
+                  <%= room.title %>
+                    <% if(currentUser){ %><a href="/projects/<%=project._id%>/rooms/<%= room._id %>/edit">Edit</a>
+                      <% } %>
+                </h4>
+                <div class="d-flex justify-content-between">
+                  <a href="/projects/<%= project._id %>/rooms/<%= room._id %>" class="btn view">View</a>
+                  <% if( currentUser && room.author.equals(currentUser._id)) {%>
+                    <form action="/projects/<%= project._id %>/rooms/<%= room._id %>?_method=DELETE" method="POST">
+                      <button class="btn delete"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                          fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                          <path
+                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                          <path fill-rule="evenodd"
+                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                        </svg>
+                      </button>
+                    </form>
+                    <% } %>
+                </div>
+              </div>
+            </div>
+            <% } %> 
+            <% } %>
+    </div>
+  </div>
