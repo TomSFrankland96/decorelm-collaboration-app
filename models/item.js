@@ -10,7 +10,7 @@ const ImageSchema = new Schema({
 });
 
 ImageSchema.virtual('thumbnail').get(function () {
-    return this.url.replace('/upload', '/upload/c_crop,h_200,w_200');
+    return this.url.replace('/upload', '/upload/c_crop,h_500,w_500');
 });
 
 const opts = { toJSON: { virtuals: true } };

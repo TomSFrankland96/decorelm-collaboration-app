@@ -222,7 +222,7 @@ img:hover{
   background-size: 100%, 100%;
   border-radius: 50%;
   background-image: none;
-  margin-top: 110%;
+  margin-top: 60%;
   position: relative;
 }
 
@@ -234,14 +234,14 @@ img:hover{
 .carousel-control-next-icon:after
 {
   content: '>';
-  font-size: 22px;
+  font-size: 25px;
   color: black;
   margin-left: 20%;
 }
 
 .carousel-control-prev-icon:after {
   content: '<';
-  font-size: 22px;
+  font-size: 25px;
   color: black;
   margin-right: 20%;
 }
@@ -285,3 +285,6 @@ img:hover{
     transform: translate(-50%, -50%);
   }
 
+.project-title{
+    font-size: 25px;
+}

@@ -56,231 +56,253 @@
 
   <div class="my-2">
     <ul>
-      <% for (let itemCategory of room.itemCategories) { %>
-        <li class="items-list mx-4 my-2">
-          <div class="card mb-3 shadow">
-            <% if( currentUser && room.author.equals(currentUser._id)) {%>
-              <div>
-                <div class="d-flex justify-content-between">
-                  <form
-                    action="/projects/<%= project._id %>/rooms/<%= room._id %>/item-categories/<%= itemCategory._id %>?_method=DELETE"
-                    method="POST">
-                    <button class="btn btn-sm btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                        fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                        <path
-                          d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                        <path fill-rule="evenodd"
-                          d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                      </svg></button>
-                  </form>
+      <% if(room.itemCategories.length> 0) { %>
+        <% for (let itemCategory of room.itemCategories) { %>
+          <li class="items-list mx-4 my-2">
+            <div class="card mb-3 shadow">
+              <% if( currentUser && room.author.equals(currentUser._id)) {%>
+                <div>
+                  <div class="d-flex justify-content-between">
+                    <form
+                      action="/projects/<%= project._id %>/rooms/<%= room._id %>/item-categories/<%= itemCategory._id %>?_method=DELETE"
+                      method="POST">
+                      <button class="btn btn-sm btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                          height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                          <path
+                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                          <path fill-rule="evenodd"
+                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                        </svg></button>
+                    </form>
 
-                  <% if( currentUser && room.author.equals(currentUser._id)) {%>
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn add-item" data-bs-toggle="modal"
-                      data-bs-target="#addItem<%= itemCategory._id %>">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-plus-square" viewBox="0 0 16 16">
-                        <path
-                          d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                        <path
-                          d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                      </svg>
-                      Add Item</button>
-                </div>
+                    <% if( currentUser && room.author.equals(currentUser._id)) {%>
+                      <!-- Button trigger modal -->
+                      <button type="button" class="btn add-item" data-bs-toggle="modal"
+                        data-bs-target="#addItem<%= itemCategory._id %>">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-plus-square" viewBox="0 0 16 16">
+                          <path
+                            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                          <path
+                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                        </svg>
+                        Add Item</button>
+                  </div>
 
-                <!-- Modal -->
-                <div class="modal fade" id="addItem<%= itemCategory._id %>" tabindex="-1" aria-labelledby="addItemLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-body">
-                        <h2>Add Items</h2>
-                        <form
-                          action="/projects/<%= project._id %>/rooms/<%= room._id %>/item-categories/<%= itemCategory._id %>/items"
-                          method="POST" class="mb-3 validated-form" enctype="multipart/form-data">
-                          <div class="mb-3">
-                            <label class="form-label" for="name">Item Name</label>
-                            <textarea class="form-control" name="item[name]" id="name" cols="30" rows="1"
-                              required></textarea>
-                            <div class="valid-feedback">
-                              Looks good!
+                  <!-- Modal -->
+                  <div class="modal fade" id="addItem<%= itemCategory._id %>" tabindex="-1"
+                    aria-labelledby="addItemLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-body">
+                          <h2>Add Items</h2>
+                          <form
+                            action="/projects/<%= project._id %>/rooms/<%= room._id %>/item-categories/<%= itemCategory._id %>/items"
+                            method="POST" class="mb-3 validated-form" enctype="multipart/form-data">
+                            <div class="mb-3">
+                              <label class="form-label" for="name">Item Name</label>
+                              <textarea class="form-control" name="item[name]" id="name" cols="30" rows="1"
+                                required></textarea>
+                              <div class="valid-feedback">
+                                Looks good!
+                              </div>
                             </div>
-                          </div>
-                          <div class="mb-3">
-                            <label class="form-label" for="brand">Brand</label>
-                            <textarea class="form-control" name="item[brand]" id="brand" cols="30" rows="1"
-                              required></textarea>
-                            <div class="valid-feedback">
-                              Looks good!
+                            <div class="mb-3">
+                              <label class="form-label" for="brand">Brand</label>
+                              <textarea class="form-control" name="item[brand]" id="brand" cols="30" rows="1"
+                                required></textarea>
+                              <div class="valid-feedback">
+                                Looks good!
+                              </div>
                             </div>
-                          </div>
-                          <div class="mb-3">
-                            <label class="form-label" for="link">Link</label>
-                            <textarea class="form-control" type="text" id="link" name="item[link]" rows="1"
-                              required></textarea>
-                          </div>
-                          <div class="mb-3">
-                            <label class="form-label" for="price">Price</label>
-                            <div class="input-group">
-                              <span class="input-group-text" id="price-label">£</span>
-                              <input type="text" class="form-control" id="price" placeholder="49.99" aria-label="price"
-                                aria-describedby="price-label" name="item[price]" required>
+                            <div class="mb-3">
+                              <label class="form-label" for="link">Link</label>
+                              <textarea class="form-control" type="text" id="link" name="item[link]" rows="1"
+                                required></textarea>
                             </div>
-                          </div>
-                          <div class="mb-3">
-                            <div class="form-file custom-file">
-                              <input type="file" class="form-file-input" id="image" name="image" required>
-                              <label class="form-file-label" for="image">
-                                <span class="form-file-text custom-file-label">Choose image...</span>
-                                <span class="form-file-button">Browse</span>
-                              </label>
+                            <div class="mb-3">
+                              <label class="form-label" for="price">Price</label>
+                              <div class="input-group">
+                                <span class="input-group-text" id="price-label">£</span>
+                                <input type="text" class="form-control" id="price" placeholder="49.99"
+                                  aria-label="price" aria-describedby="price-label" name="item[price]" required>
+                              </div>
                             </div>
-                          </div>
-                          <!-- <div class="mb-3 form-check">
+                            <div class="mb-3">
+                              <div class="form-file custom-file">
+                                <input type="file" class="form-file-input" id="image" name="image" required>
+                                <label class="form-file-label" for="image">
+                                  <span class="form-file-text custom-file-label">Choose image...</span>
+                                  <span class="form-file-button">Browse</span>
+                                </label>
+                              </div>
+                            </div>
+                            <!-- <div class="mb-3 form-check">
                             <label class="form-check-label" for="recommended">Recommended?</label>
                             <input class="form-check-input" type="checkbox" id="recommended" name="item[recommended]" value=<% true %>>
                           </div> -->
-                          <div class="mb-3">
-                            <div class="form-check-inline">
-                              <input type="checkbox" id="recommended" name="item[recommended]">
+                            <div class="mb-3">
+                              <div class="form-check-inline">
+                                <input type="checkbox" id="recommended" name="item[recommended]">
+                              </div>
+                              <label for="recommended">Recommended?</label>
                             </div>
-                            <label for="recommended">Recommended?</label>
-                          </div>
-                          <button class="btn tan-btn">Submit</button>
+                            <button class="btn tan-btn">Submit</button>
+                        </div>
+                        </form>
                       </div>
-                      </form>
                     </div>
                   </div>
+                  <% } %>
+
                 </div>
                 <% } %>
-
-              </div>
-              <% } %>
-                <div class="card-body">
-                  <span class="tag">CATEGORY</span>
-                  <h4>
-                    <%= itemCategory.name %>
-                      <% if( currentUser && room.author.equals(currentUser._id)) {%><a class="card-link"
-                          href="/projects/<%=project._id%>/rooms/<%= room._id %>/item-categories/<%= itemCategory._id %>/edit">Edit</a>
-                        <% } %>
-                  </h4>
-                </div>
-                <div id="itemCarousel<%= itemCategory._id %>" class="carousel slide" data-ride="carousel"
-                  data-bs-interval="false">
-                  <div class="carousel-inner">
-                    <% for(let item of itemCategory.items) { %>
-                      <% if(item===itemCategory.items[0]) {%>
-                        <div class="carousel-item active">
-                          <div class="item-img">
-                            <a href="<%= item.link %>" class="card-link" target="_blank"><img
-                                src="<%= item.image[0].url %>" class="d-block w-100 card-img-top" alt="">
-                                <% if(item.recommended) { %>
-                                  <div class="recommended-container">
-                                    <div class="recommended">
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-                                        <path
-                                          d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                        <path
-                                          d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
-                                      </svg> DESIGNER'S CHOICE
-                                    </div>
-                                  </div>
-                                  <% } %>
-                              <% if(itemCategory.items.length> 1) { %> <div class="order">
-                                  <%= itemCategory.items.indexOf(item) + 1 %> of <%= itemCategory.items.length %>
-                                </div>
-                                <% } %>
-                            </a>
-                          </div>
-                          <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                              <li class="list-group-item card-title">
-                                <%= item.name %>
-                              </li>
-                              <li class="list-group-item card-text">
-                                <%= item.brand %> - <span style="font-size: 20px">£<%= item.price %></span>
-                              </li>
-                              <li class="list-group-item card-text text-center mt-3"><a href="<%= item.link %>"
-                                  class="card-link btn view" target="_blank">View</a></li>
-                            </ul>
-                            <% if( currentUser && room.author.equals(currentUser._id)) {%>
-                              <form
-                                action="/projects/<%= project._id %>/rooms/<%= room._id %>/item-categories/<%= itemCategory._id %>/items/<%= item._id %>?_method=DELETE"
-                                method="POST">
-                                <button class="btn delete"><svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                    height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                    <path
-                                      d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                                    <path fill-rule="evenodd"
-                                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                                  </svg>Delete Item</button>
-                                <!-- <a class="card-link btn btn-info"
-                                      href="/projects/<%=project._id%>/rooms/<%= room._id %>/item-categories/<%= itemCategory._id %>/items/<%= item._id %>/edit">Edit</a> -->
-                              </form>
-                              <% } %>
-                          </div>
-                        </div>
-                        <% } else { %>
-                          <div class="carousel-item">
-                            <div class="item-img">
-                              <a href="<%= item.link %>" class="card-link" target="_blank"><img
-                                  src="<%= item.image[0].url %>" class="d-block w-100 card-img-top" alt="">
-                                <% if(itemCategory.items.length> 1) { %> <div class="order">
-                                    <%= itemCategory.items.indexOf(item) + 1 %> of <%= itemCategory.items.length %>
-                                  </div>
-                                  <% } %>
-                              </a>
-                            </div>
-                            <div class="card-body">
-                              <ul class="list-group list-group-flush">
-                                <li class="list-group-item card-title">
-                                  <%= item.name %>
-                                </li>
-                                <li class="list-group-item card-text">
-                                  <%= item.brand %> - <span style="font-size: 20px">£<%= item.price %></span>
-                                </li>
-                                <li class="list-group-item card-text text-center mt-3"><a href="<%= item.link %>"
-                                    class="card-link btn view" target="_blank">View</a></li>
-                              </ul>
-                              <% if( currentUser && room.author.equals(currentUser._id)) {%>
-                                <form
-                                  action="/projects/<%= project._id %>/rooms/<%= room._id %>/item-categories/<%= itemCategory._id %>/items/<%= item._id %>?_method=DELETE"
-                                  method="POST">
-                                  <button class="btn delete"><svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                      height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                      <path
-                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                                      <path fill-rule="evenodd"
-                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                                    </svg>Delete Item</button>
-                                </form>
-                                <% } %>
-                                  <!-- <a class="card-link btn btn-info"
-                                      href="/projects/<%=project._id%>/rooms/<%= room._id %>/item-categories/<%= itemCategory._id %>/items/<%= item._id %>/edit">Edit</a> -->
-                            </div>
-                          </div>
+                  <div class="card-body">
+                    <span class="tag">CATEGORY</span>
+                    <h4>
+                      <%= itemCategory.name %>
+                        <% if( currentUser && room.author.equals(currentUser._id)) {%><a class="card-link"
+                            href="/projects/<%=project._id%>/rooms/<%= room._id %>/item-categories/<%= itemCategory._id %>/edit">Edit</a>
                           <% } %>
-                            <% } %>
+                    </h4>
                   </div>
-                  <% if(itemCategory.items.length> 1) {%>
-                    <div>
-                      <a class="carousel-control-prev" type="" data-bs-target="#itemCarousel<%= itemCategory._id %>"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden"></span>
-                      </a>
-                      <a class="carousel-control-next" type="" data-bs-target="#itemCarousel<%= itemCategory._id %>"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden"></span>
-                      </a>
+                  <div id="itemCarousel<%= itemCategory._id %>" class="carousel slide" data-ride="carousel"
+                    data-bs-interval="false">
+                    <div class="carousel-inner">
+                      <% if(itemCategory.items.length> 0) { %>
+                        <% for(let item of itemCategory.items) { %>
+                          <% if(item===itemCategory.items[0]) {%>
+                            <div class="carousel-item active">
+                              <div class="item-img">
+                                <a href="<%= item.link %>" class="card-link" target="_blank"><img
+                                    src="<%= item.image[0].thumbnail %>" class="d-block w-100 card-img-top" alt="">
+                                  <% if(item.recommended) { %>
+                                    <div class="recommended-container">
+                                      <div class="recommended">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                          fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                                          <path
+                                            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                          <path
+                                            d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                                        </svg> DESIGNER'S CHOICE
+                                      </div>
+                                    </div>
+                                    <% } %>
+                                      <% if(itemCategory.items.length> 1) { %> <div class="order">
+                                          <%= itemCategory.items.indexOf(item) + 1 %> of <%= itemCategory.items.length
+                                              %>
+                                        </div>
+                                        <% } %>
+                                </a>
+                              </div>
+                              <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                  <li class="list-group-item card-title">
+                                    <%= item.name %>
+                                  </li>
+                                  <li class="list-group-item card-text">
+                                    <%= item.brand %> - <span style="font-size: 20px">£<%= item.price %></span>
+                                  </li>
+                                  <li class="list-group-item card-text text-center mt-3"><a href="<%= item.link %>"
+                                      class="card-link btn view" target="_blank">View</a></li>
+                                </ul>
+                                <% if( currentUser && room.author.equals(currentUser._id)) {%>
+                                  <form
+                                    action="/projects/<%= project._id %>/rooms/<%= room._id %>/item-categories/<%= itemCategory._id %>/items/<%= item._id %>?_method=DELETE"
+                                    method="POST">
+                                    <button class="btn delete"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                        height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path
+                                          d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                        <path fill-rule="evenodd"
+                                          d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                      </svg>Delete Item</button>
+                                    <!-- <a class="card-link btn btn-info"
+                                      href="/projects/<%=project._id%>/rooms/<%= room._id %>/item-categories/<%= itemCategory._id %>/items/<%= item._id %>/edit">Edit</a> -->
+                                  </form>
+                                  <% } %>
+                              </div>
+                            </div>
+                            <% } else { %>
+                              <div class="carousel-item">
+                                <div class="item-img">
+                                  <a href="<%= item.link %>" class="card-link" target="_blank"><img
+                                      src="<%= item.image[0].thumbnail %>" class="d-block w-100 card-img-top" alt="">
+                                    <% if(itemCategory.items.length> 1) { %> <div class="order">
+                                        <%= itemCategory.items.indexOf(item) + 1 %> of <%= itemCategory.items.length %>
+                                      </div>
+                                      <% } %>
+                                  </a>
+                                  <% if(item.recommended) { %>
+                                    <div class="recommended-container">
+                                      <div class="recommended">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                          fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                                          <path
+                                            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                          <path
+                                            d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                                        </svg> DESIGNER'S CHOICE
+                                      </div>
+                                    </div>
+                                    <% } %>
+                                </div>
+                                <div class="card-body">
+                                  <ul class="list-group list-group-flush">
+                                    <li class="list-group-item card-title">
+                                      <%= item.name %>
+                                    </li>
+                                    <li class="list-group-item card-text">
+                                      <%= item.brand %> - <span style="font-size: 20px">£<%= item.price %></span>
+                                    </li>
+                                    <li class="list-group-item card-text text-center mt-3"><a href="<%= item.link %>"
+                                        class="card-link btn view" target="_blank">View</a></li>
+                                  </ul>
+                                  <% if( currentUser && room.author.equals(currentUser._id)) {%>
+                                    <form
+                                      action="/projects/<%= project._id %>/rooms/<%= room._id %>/item-categories/<%= itemCategory._id %>/items/<%= item._id %>?_method=DELETE"
+                                      method="POST">
+                                      <button class="btn delete"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                          height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                          <path
+                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                          <path fill-rule="evenodd"
+                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                        </svg>Delete Item</button>
+                                    </form>
+                                    <% } %>
+                                      <!-- <a class="card-link btn btn-info"
+                                      href="/projects/<%=project._id%>/rooms/<%= room._id %>/item-categories/<%= itemCategory._id %>/items/<%= item._id %>/edit">Edit</a> -->
+                                </div>
+                              </div>
+                              <% } %>
+                                <% } %>
+                                  <% } else {%>
+                                    <p>You don't have any items yet :(</p>
+                                    <% } %>
                     </div>
-                    <% } %>
-                </div>
-          </div>
-        </li>
-        <% } %>
+                    <% if(itemCategory.items.length> 1) {%>
+                      <div>
+                        <a class="carousel-control-prev" type="" data-bs-target="#itemCarousel<%= itemCategory._id %>"
+                          data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden"></span>
+                        </a>
+                        <a class="carousel-control-next" type="" data-bs-target="#itemCarousel<%= itemCategory._id %>"
+                          data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden"></span>
+                        </a>
+                      </div>
+                      <% } %>
+                  </div>
+            </div>
+          </li>
+          <% } %>
+            <% } else {%>
+              <p>You don't have any items yet :(</p>
+              <% } %>
     </ul>
   </div>
   </div>

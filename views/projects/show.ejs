@@ -3,7 +3,7 @@
     <div class="col-md-6">
       <div class="card mb-3">
         <div class="card-body">
-          <h3 class="card-title">
+          <h3 class="card-title project-title">
             <%= project.title%>
           </h3>
           <p class="card-text">
@@ -72,10 +72,8 @@
           <button class="btn dark-btn">Submit</button>
         </form>
         <% } %>
+        <% if(project.rooms.length > 0) { %> 
           <% for (let room of project.rooms) { %>
-            <% if(project.rooms < 1) { %> 
-                <p>Nothing here yet</p>
-              <% } else { %>
             <div class="card mb-3 shadow">
               <div class="card-body">
                 <span class="tag">ROOM</span>
@@ -102,6 +100,8 @@
               </div>
             </div>
             <% } %> 
-            <% } %>
+            <% } else {%> 
+              <p>You don't have any rooms yet :(</p>
+              <% } %> 
     </div>
   </div>
