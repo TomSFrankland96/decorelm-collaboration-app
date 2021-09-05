@@ -217,13 +217,13 @@ img:hover{
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  height: 100px;
-  width: 100px;
+  height: 120px;
+  width: 120px;
   background-size: 100%, 100%;
   border-radius: 50%;
   background-image: none;
-  margin-top: 60%;
-  position: relative;
+  margin-top: 50%;
+  position: absolute;
 }
 
 .carousel-control-prev-icon,
@@ -251,16 +251,21 @@ img:hover{
     position: relative;
     text-align: center;
     color: white;
+    width: 100%;
   }
 
 .order {
     position: absolute;
-    top: 86%;
-    left: 50%;
+    top: 5%;
+    left: 85%;
     transform: translate(-50%, -50%);
     color: black !important;
     font-size: 12px;
     font-family: 'Raleway';
+    background-color: rgba(255, 255, 255, 0.363);
+    border-radius: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
   }
 
   .recommended{
@@ -285,6 +290,35 @@ img:hover{
     transform: translate(-50%, -50%);
   }
 
+  .new{
+    font-size: 9px;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    text-align: center;
+    font-family: 'Raleway';
+}
+
+.new-container{
+    background-color: #ebcb17;
+    border-radius: 10px;
+    color: white;
+    width: 54%;
+    padding: 1px 5px;
+    position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .project-title{
     font-size: 25px;
+}
+
+
+.project-des{
+    font-family: 'Raleway';
+    letter-spacing: 1px;
+    font-size: 13px;
 }

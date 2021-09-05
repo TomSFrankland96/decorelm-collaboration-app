@@ -129,6 +129,13 @@
                               </div>
                             </div>
                             <div class="mb-3">
+                              <label class="form-label" for="comment">Comments</label>
+                              <textarea class="form-control" name="item[comment]" id="comment" cols="30" rows="1"></textarea>
+                              <div class="valid-feedback">
+                                Looks good!
+                              </div>
+                            </div>
+                            <div class="mb-3">
                               <div class="form-file custom-file">
                                 <input type="file" class="form-file-input" id="image" name="image" required>
                                 <label class="form-file-label" for="image">
@@ -137,15 +144,17 @@
                                 </label>
                               </div>
                             </div>
-                            <!-- <div class="mb-3 form-check">
-                            <label class="form-check-label" for="recommended">Recommended?</label>
-                            <input class="form-check-input" type="checkbox" id="recommended" name="item[recommended]" value=<% true %>>
-                          </div> -->
                             <div class="mb-3">
                               <div class="form-check-inline">
                                 <input type="checkbox" id="recommended" name="item[recommended]">
                               </div>
                               <label for="recommended">Recommended?</label>
+                            </div>
+                            <div class="mb-3">
+                              <div class="form-check-inline">
+                                <input type="checkbox" id="new" name="item[new]">
+                              </div>
+                              <label for="new">New?</label>
                             </div>
                             <button class="btn tan-btn">Submit</button>
                         </div>
@@ -189,6 +198,16 @@
                                       </div>
                                     </div>
                                     <% } %>
+                                    <% if(item.new) { %>
+                                      <div class="new-container">
+                                        <div class="new">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                            <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                                          </svg> NEW
+                                        </div>
+                                      </div>
+                                      <% } %>
                                       <% if(itemCategory.items.length> 1) { %> <div class="order">
                                           <%= itemCategory.items.indexOf(item) + 1 %> of <%= itemCategory.items.length
                                               %>
@@ -202,8 +221,13 @@
                                     <%= item.name %>
                                   </li>
                                   <li class="list-group-item card-text">
-                                    <%= item.brand %> - <span style="font-size: 20px">£<%= item.price %></span>
+                                    <%= item.brand %> - £<%= item.price %>
                                   </li>
+                                  <% if(item.comment) {%> 
+                                  <li class="list-group-item card-text">
+                                    <%= item.comment %>
+                                  </li>
+                                  <% } %> 
                                   <li class="list-group-item card-text text-center mt-3"><a href="<%= item.link %>"
                                       class="card-link btn view" target="_blank">View</a></li>
                                 </ul>
@@ -222,6 +246,10 @@
                                       href="/projects/<%=project._id%>/rooms/<%= room._id %>/item-categories/<%= itemCategory._id %>/items/<%= item._id %>/edit">Edit</a> -->
                                   </form>
                                   <% } %>
+                                  <% if( currentUser && room.author.equals(currentUser._id)) {%>
+                                      <a class="card-link btn btn-info"
+                                        href="/projects/<%=project._id%>/rooms/<%= room._id %>/item-categories/<%= itemCategory._id %>/items/<%= item._id %>/edit">Edit</a>
+                                    <% } %>
                               </div>
                             </div>
                             <% } else { %>
@@ -247,6 +275,16 @@
                                       </div>
                                     </div>
                                     <% } %>
+                                    <% if(item.new) { %>
+                                      <div class="new-container">
+                                        <div class="new">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                            <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                                          </svg> NEW
+                                        </div>
+                                      </div>
+                                      <% } %>
                                 </div>
                                 <div class="card-body">
                                   <ul class="list-group list-group-flush">
@@ -256,6 +294,11 @@
                                     <li class="list-group-item card-text">
                                       <%= item.brand %> - <span style="font-size: 20px">£<%= item.price %></span>
                                     </li>
+                                    <% if(item.comment) {%> 
+                                      <li class="list-group-item card-text">
+                                        <%= item.comment %>
+                                      </li>
+                                      <% } %> 
                                     <li class="list-group-item card-text text-center mt-3"><a href="<%= item.link %>"
                                         class="card-link btn view" target="_blank">View</a></li>
                                   </ul>
@@ -272,8 +315,10 @@
                                         </svg>Delete Item</button>
                                     </form>
                                     <% } %>
-                                      <!-- <a class="card-link btn btn-info"
-                                      href="/projects/<%=project._id%>/rooms/<%= room._id %>/item-categories/<%= itemCategory._id %>/items/<%= item._id %>/edit">Edit</a> -->
+                                    <% if( currentUser && room.author.equals(currentUser._id)) {%>
+                                      <a class="card-link btn btn-info"
+                                        href="/projects/<%=project._id%>/rooms/<%= room._id %>/item-categories/<%= itemCategory._id %>/items/<%= item._id %>/edit">Edit</a>
+                                    <% } %>
                                 </div>
                               </div>
                               <% } %>

@@ -7,21 +7,21 @@
                 method="POST" novalidate class="validated-form">
                 <div class="mb-3">
                     <label class="form-label" for="name">Item Name</label>
-                    <textarea class="form-control" name="item[name]" value="<%=item.name %>" id="name" cols="30" rows="1" required></textarea>
+                    <input class="form-control" name="item[name]" value="<%=item.name %>" id="name" cols="30" rows="1" required></input>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="brand">Brand</label>
-                    <textarea class="form-control" name="item[brand]" id="brand" cols="30" rows="1" value="<%=item.brand %>" required></textarea>
+                    <input class="form-control" name="item[brand]" id="brand" cols="30" rows="1" value="<%=item.brand %>" required></input>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="link">Link</label>
-                    <textarea class="form-control" type="text" id="link" name="item[link]" value="<%=item.link %>" rows="1" required></textarea>
+                    <input class="form-control" type="text" id="link" name="item[link]" value="<%=item.link %>" rows="1" required></input>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="price">Price</label>
@@ -32,14 +32,24 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <div class="form-file custom-file">
-                        <input type="file" class="form-file-input" id="image" name="image" required>
-                        <label class="form-file-label" for="image">
-                            <span class="form-file-text custom-file-label">Choose image(s)...</span>
-                            <span class="form-file-button">Browse</span>
-                        </label>
+                    <label class="form-label" for="comment">Comments</label>
+                    <input class="form-control" name="item[comment]" id="comment" cols="30" rows="1" value="<%=item.comment %>"></input>
+                    <div class="valid-feedback">
+                        Looks good!
                     </div>
                 </div>
+                <div class="mb-3">
+                    <div class="form-check-inline">
+                      <input type="checkbox" id="recommended" name="item[recommended]" value="<%= item.recommended %>">
+                    </div>
+                    <label for="recommended">Recommended?</label>
+                  </div>
+                  <div class="mb-3">
+                    <div class="form-check-inline">
+                      <input type="checkbox" id="new" name="item[new]">
+                    </div>
+                    <label for="new">New?</label>
+                  </div>
                 <button class="btn tan-btn">Submit</button>
         </div>
         </form>

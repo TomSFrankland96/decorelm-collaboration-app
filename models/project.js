@@ -11,7 +11,6 @@ const ProjectSchema = new Schema({
     title: String,
     price: Number,
     description: String,
-    location: String,
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User'

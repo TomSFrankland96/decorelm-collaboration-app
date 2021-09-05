@@ -10,8 +10,10 @@ const ImageSchema = new Schema({
 });
 
 ImageSchema.virtual('thumbnail').get(function () {
-    return this.url.replace('/upload', '/upload/c_crop,h_500,w_500');
+    return this.url.replace('/upload', '/upload/b_rgb:f5f4ef,c_pad,h_250,w_250');
 });
+// rgb(233,231,220)
+
 
 const opts = { toJSON: { virtuals: true } };
 
@@ -21,7 +23,9 @@ const ItemSchema = new Schema({
     brand: String,
     link: String,
     price: Number,
-    recommended: String
+    comment: String,
+    recommended: String,
+    new: String
 }, opts);
 
 module.exports = mongoose.model("Item", ItemSchema);

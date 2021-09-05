@@ -52,7 +52,9 @@ module.exports.itemSchema = Joi.object({
         link: Joi.string().required(),
         price: Joi.number().required(),
         brand: Joi.string().required(),
-    }).required(),
+        comment: Joi.string().optional().allow(''),
+        recommended: Joi.string().optional().allow('')
+    }),
     deleteImages: Joi.array()
 })
 
