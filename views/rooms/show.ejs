@@ -57,7 +57,7 @@
   <div class="my-2 justify-content-center">
     <% if(room.itemCategories.length> 0) { %>
       <% for (let itemCategory of room.itemCategories) { %>
-        <div class="card mb-3 shadow d-inline-flex mx-3">
+        <div class="card card-room mb-3 shadow d-inline-flex mx-3">
           <% if( currentUser && room.author.equals(currentUser._id)) {%>
             <div>
               <div class="d-flex justify-content-between">
