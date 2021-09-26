@@ -23,6 +23,7 @@ const MongoDBStore = require('connect-mongo')(session);
 const userRoutes = require('./routes/users');
 const projectRoutes = require('./routes/projects');
 const roomRoutes = require('./routes/rooms');
+const designRoutes = require('./routes/designs');
 const itemCategoryRoutes = require('./routes/itemCategories');
 const itemRoutes = require('./routes/items');
 const commentRoutes = require('./routes/comments');
@@ -147,6 +148,7 @@ app.use('/', userRoutes);
 app.use('/projects', projectRoutes);
 app.use('/projects/:id/rooms', roomRoutes);
 app.use('/projects/:id/rooms/:roomId/item-categories', itemCategoryRoutes);
+app.use('/projects/:id/rooms/:roomId/designs', designRoutes);
 app.use('/projects/:id/rooms/:roomId/item-categories/:itemCategoryId/items', itemRoutes);
 app.use('/projects/:id/rooms/:roomId/comments', commentRoutes);
 

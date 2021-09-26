@@ -10,7 +10,7 @@ const ImageSchema = new Schema({
 });
 
 ImageSchema.virtual('thumbnail').get(function () {
-    return this.url.replace('/upload', '/upload/b_rgb:f5f4ef,c_pad,h_250,w_250');
+    return this.url.replace('/upload', '/upload/b_white,c_pad,h_500,w_500');
 });
 // rgb(233,231,220)
 

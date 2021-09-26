@@ -40,6 +40,9 @@ module.exports.updateItem = async (req, res) => {
     const room = await Room.findById(req.params.roomId);
     const itemCategory = await ItemCategory.findById(req.params.itemCategoryId);
     const item = await Item.findByIdAndUpdate(itemId, { ...req.body.item });
+    if (req.body.deleteRecommended) {
+        await item.updateOne({ $pull: { recommended } })
+    }
     await item.save();
     req.flash('success', 'Successfully updated item!');
     res.redirect(`/projects/${project._id}/rooms/${room._id}`)

@@ -55,11 +55,18 @@ module.exports.itemSchema = Joi.object({
         comment: Joi.string().optional().allow(''),
         recommended: Joi.string().optional().allow('')
     }),
-    deleteImages: Joi.array()
+    deleteImages: Joi.array(),
 })
 
 module.exports.commentSchema = Joi.object({
     comment: Joi.object({
         body: Joi.string().required(),
+    }).required(),
+})
+
+module.exports.designSchema = Joi.object({
+    design: Joi.object({
+    title: Joi.string().required(),
+    link: Joi.string().required(),
     }).required(),
 })

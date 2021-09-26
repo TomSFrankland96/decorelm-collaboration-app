@@ -4,6 +4,22 @@
     font-size: 17px;
 }
 
+.card{
+    width: 30%;
+}
+
+@media screen and (max-width: 481px) {
+    .card{
+        width: 90%;
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 1024px){
+    .card{
+        width: 40%;
+    }
+}
+
 button{
     font-family: 'Raleway', serif;
 }
@@ -187,9 +203,6 @@ img:hover{
 }
 
 
-.carousel-control-prev{
-    background-color: none;
-}
 
 
 .add-item{
@@ -222,7 +235,7 @@ img:hover{
   background-size: 100%, 100%;
   border-radius: 50%;
   background-image: none;
-  margin-top: 50%;
+  margin-top: 55%;
   position: absolute;
 }
 
@@ -234,16 +247,16 @@ img:hover{
 .carousel-control-next-icon:after
 {
   content: '>';
-  font-size: 25px;
-  color: black;
-  margin-left: 20%;
+  font-size: 55px;
+  color: black !important;
+  margin-left: 15%;
 }
 
 .carousel-control-prev-icon:after {
   content: '<';
-  font-size: 25px;
-  color: black;
-  margin-right: 20%;
+  font-size: 55px;
+  color: black !important;
+  margin-right: 15%;
 }
 
 
@@ -259,10 +272,10 @@ img:hover{
     top: 5%;
     left: 85%;
     transform: translate(-50%, -50%);
-    color: black !important;
+    color: white !important;
     font-size: 12px;
     font-family: 'Raleway';
-    background-color: rgba(255, 255, 255, 0.363);
+    background-color: rgba(0, 0, 0, 0.7);
     border-radius: 3px;
     padding-left: 3px;
     padding-right: 3px;

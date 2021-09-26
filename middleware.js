@@ -1,10 +1,11 @@
-const { projectSchema, roomSchema, itemSchema, commentSchema, itemCategorySchema } = require('./schemas.js');
+const { projectSchema, roomSchema, itemSchema, commentSchema, itemCategorySchema, designSchema } = require('./schemas.js');
 const ExpressError = require('./utils/ExpressError');
 const Project = require('./models/project.js');
 const Room = require('./models/room.js');
 const Item = require('./models/item.js');
 const Comment = require('./models/comment.js');
-const ItemCategory = require('./models/itemCategory');
+const ItemCategory = require('./models/itemCategory.js');
+const Design = require('./models/design.js');
 
 module.exports.isLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {
@@ -47,6 +48,16 @@ module.exports.isRoomAuthor = async (req, res, next) => {
 
 module.exports.validateRoom = (req, res, next) => {
     const { error } = roomSchema.validate(req.body);
+    if (error) {
+        const msg = error.details.map(el => el.message).join(',')
+        throw new ExpressError(msg, 400)
+    } else {
+        next();
+    }
+}
+
+module.exports.validateDesign = (req, res, next) => {
+    const { error } = designSchema.validate(req.body);
     if (error) {
         const msg = error.details.map(el => el.message).join(',')
         throw new ExpressError(msg, 400)
