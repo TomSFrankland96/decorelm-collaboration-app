@@ -50,7 +50,7 @@ module.exports.itemSchema = Joi.object({
     item: Joi.object({
         name: Joi.string().required(),
         link: Joi.string().required(),
-        price: Joi.number().required(),
+        price: Joi.string(),
         brand: Joi.string().required(),
         comment: Joi.string().optional().allow(''),
         recommended: Joi.string().optional().allow('')

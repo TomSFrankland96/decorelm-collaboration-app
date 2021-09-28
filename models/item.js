@@ -22,7 +22,7 @@ const ItemSchema = new Schema({
     image: [ImageSchema],
     brand: String,
     link: String,
-    price: Number,
+    price: String,
     comment: String,
     recommended: String,
     new: String
