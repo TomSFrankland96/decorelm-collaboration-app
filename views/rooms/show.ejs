@@ -322,7 +322,11 @@
                                   <li class="list-group-item card-text">
                                     <%= item.comment %>
                                   </li>
-                                  <% } %>
+                                  <% } else { %>
+                                    <li class="list-group-item card-text">
+                                      <p> </p>
+                                    </li>
+                                    <% } %> 
                                     <li class="list-group-item card-text text-center mt-3"><a href="<%= item.link %>"
                                         class="card-link btn view" target="_blank">View</a>
                                     </li>
