@@ -27,6 +27,7 @@ const designRoutes = require('./routes/designs');
 const itemCategoryRoutes = require('./routes/itemCategories');
 const itemRoutes = require('./routes/items');
 const commentRoutes = require('./routes/comments');
+const emailRoutes = require('./routes/emails');
 
 
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
@@ -151,12 +152,16 @@ app.use('/projects/:id/rooms/:roomId/item-categories', itemCategoryRoutes);
 app.use('/projects/:id/rooms/:roomId/designs', designRoutes);
 app.use('/projects/:id/rooms/:roomId/item-categories/:itemCategoryId/items', itemRoutes);
 app.use('/projects/:id/rooms/:roomId/comments', commentRoutes);
+app.use('/emails', emailRoutes);
 
 
 app.get('/', (req, res) => {
     res.render('home')
 });
 
+app.get('/emails', (req, res) => {
+    res.render('email')
+});
 
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found', 404))
