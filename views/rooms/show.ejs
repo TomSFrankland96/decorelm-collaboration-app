@@ -242,8 +242,8 @@
                                 <%= item.name %>
                               </li>
                               <li class="list-group-item card-text">
-                                <span style="font-size: 20px"><%= item.brand %> <% if(item.price){ %>
-                                  <%= ` - £${item.price}` %></span>
+                                <%= item.brand %> <% if(item.price){ %>
+                                  <%= ` - £${item.price}` %>
                                 <% } else{ %>  
                                   <span></span>
                                <% } %>
@@ -253,7 +253,7 @@
                                   <%= item.comment %>
                                 </li>
                                 <% } else { %>
-                                  <li class="list-group-item card-text">
+                                  <li class="list-group-item rm-b card-text">
                                     <p> </p>
                                   </li>
                                   <% } %> 
@@ -320,8 +320,8 @@
                                   <%= item.name %>
                                 </li>
                                 <li class="list-group-item card-text">
-                                  <span style="font-size: 20px"><%= item.brand %><% if(item.price){ %>
-                                    <%= ` - £${item.price}` %></span>
+                                  <%= item.brand %><% if(item.price){ %>
+                                    <%= ` - £${item.price}` %>
                                   <% } else{ %>  
                                     <span></span>
                                  <% } %>

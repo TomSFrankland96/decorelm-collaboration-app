@@ -335,3 +335,12 @@ img:hover{
     letter-spacing: 1px;
     font-size: 13px;
 }
+
+.list-group-item{
+    font-family: 'Raleway';
+    font-size: 15px;
+}
+
+.rm-b{
+    border-bottom: none !important;
+}
