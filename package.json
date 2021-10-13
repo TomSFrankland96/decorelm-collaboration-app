@@ -13,6 +13,7 @@
   "dependencies": {
     "@mapbox/mapbox-sdk": "^0.11.0",
     "@sendgrid/mail": "^7.4.7",
+    "aws-sdk": "^2.1004.0",
     "bootstrap-icons": "^1.5.0",
     "cloudinary": "^1.23.0",
     "connect-flash": "^0.1.1",

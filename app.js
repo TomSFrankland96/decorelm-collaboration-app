@@ -27,6 +27,7 @@ const designRoutes = require('./routes/designs');
 const itemCategoryRoutes = require('./routes/itemCategories');
 const itemRoutes = require('./routes/items');
 const commentRoutes = require('./routes/comments');
+const uploadRoutes = require('./routes/upload');
 
 
 
@@ -152,11 +153,16 @@ app.use('/projects/:id/rooms/:roomId/item-categories', itemCategoryRoutes);
 app.use('/projects/:id/rooms/:roomId/designs', designRoutes);
 app.use('/projects/:id/rooms/:roomId/item-categories/:itemCategoryId/items', itemRoutes);
 app.use('/projects/:id/rooms/:roomId/comments', commentRoutes);
+// app.use('/projects/:id/rooms/:roomId/upload', uploadRoutes);
 
 
 
 app.get('/', (req, res) => {
     res.render('home')
+});
+
+app.get('/style-questionnaire', (req, res) => {
+    res.render('styleQuiz')
 });
 
 
