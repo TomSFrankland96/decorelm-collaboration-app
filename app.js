@@ -20,6 +20,7 @@ const MongoDBStore = require('connect-mongo')(session);
 
 
 
+
 const userRoutes = require('./routes/users');
 const projectRoutes = require('./routes/projects');
 const roomRoutes = require('./routes/rooms');
@@ -158,7 +159,7 @@ app.use('/projects/:id/rooms/:roomId/comments', commentRoutes);
 
 
 app.get('/', (req, res) => {
-    res.render('home')
+    res.redirect('/projects')
 });
 
 app.get('/style-questionnaire', (req, res) => {
