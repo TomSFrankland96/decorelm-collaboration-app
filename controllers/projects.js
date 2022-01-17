@@ -42,7 +42,7 @@ module.exports.renderEditForm = async (req, res) => {
 
 module.exports.updateProject = async (req, res) => {
     const { id } = req.params;
-    const project = await Project.findByIdAndUpdate(id, { ...req.body.campground });
+    const project = await Project.findByIdAndUpdate(id, { ...req.body.project });
     await project.save();
     req.flash('success', 'Successfully updated project!');
     res.redirect(`/projects/${project._id}`)

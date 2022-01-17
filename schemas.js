@@ -27,7 +27,7 @@ const Joi = BaseJoi.extend(extension);
 module.exports.projectSchema = Joi.object({
     project: Joi.object({
         title: Joi.string().required().escapeHTML(),
-        price: Joi.number().required().min(0),
+        price: Joi.string().optional().min(0).allow(''),
         // image: Joi.string().required(),
         location: Joi.string().required().escapeHTML(),
         description: Joi.string().required().escapeHTML()
@@ -50,7 +50,7 @@ module.exports.itemSchema = Joi.object({
     item: Joi.object({
         name: Joi.string().required(),
         link: Joi.string().required(),
-        price: Joi.string(),
+        price: Joi.string().optional().allow(''),
         brand: Joi.string().required(),
         comment: Joi.string().optional().allow(''),
         recommended: Joi.string().optional().allow('')
