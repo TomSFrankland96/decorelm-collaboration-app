@@ -56,6 +56,7 @@ module.exports.itemSchema = Joi.object({
         recommended: Joi.string().optional().allow('')
     }),
     deleteImages: Joi.array(),
+    
 })
 
 module.exports.commentSchema = Joi.object({
