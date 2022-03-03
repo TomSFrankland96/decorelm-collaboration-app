@@ -50,12 +50,13 @@ module.exports.itemSchema = Joi.object({
     item: Joi.object({
         name: Joi.string().required(),
         link: Joi.string().required(),
-        price: Joi.string(),
+        price: Joi.string().optional().allow(''),
         brand: Joi.string().required(),
         comment: Joi.string().optional().allow(''),
         recommended: Joi.string().optional().allow('')
     }),
     deleteImages: Joi.array(),
+    
 })
 
 module.exports.commentSchema = Joi.object({

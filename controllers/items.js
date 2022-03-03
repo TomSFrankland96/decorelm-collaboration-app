@@ -10,6 +10,7 @@ module.exports.createItem = async (req, res) => {
     const itemCategory = await ItemCategory.findById(req.params.itemCategoryId);
     const item = new Item(req.body.item);
     item.image = req.files.map(f => ({ url: f.path, filename: f.filename }));
+    console.log(item.image)
     item.author = req.user._id;
     itemCategory.items.push(item);
     await item.save();

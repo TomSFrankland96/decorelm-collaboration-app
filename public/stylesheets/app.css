@@ -4,21 +4,55 @@
     font-size: 17px;
 }
 
-.card-room{
-    width: 30%;
-}
+
+
+
+/*---- MOBILE CSS ------*/
 
 @media screen and (max-width: 481px) {
     .card{
         width: 90%;
     }
+    .items-list{
+        width: 100%;
+        margin-left: -20px !important;
+    }
+    .tan-btn{
+        font-size: 12px;
+        padding: 13px 10px !important;
+    }
+    .dark-btn{
+        font-size: 12px;
+        padding: 13px 10px !important;
+    }
+    .projects-list{
+        width: 100%;
+        list-style: none;
+        margin-left: -20px !important;
+    }
+
 }
 
+
+
+/*---- END OF MOBILE CSS -----*/
+
+
+/*------ TABLET CSS ---------*/
+
 @media only screen and (min-width: 481px) and (max-width: 1024px){
-    .card{
+
+    .items-list{
         width: 40%;
     }
+    .card-room{
+        width: 45%;
+        display: flex;
+        height: 65vh;
+    }
 }
+
+/*------- END OF TABLET CSS ------*/
 
 button{
     font-family: 'Raleway', serif;
@@ -33,14 +67,30 @@ button{
     display: inline-block;
 }
 
+/*------ DESKTOP CSS ------*/
+
 @media screen and (min-width: 1101px) {
 .projects-list{
     width: 28%;
     display: inline-block;
 }
+.mobile-menu{
+    display: none;
+}
+.card-room{
+    width: 22%;
+    display: flex;
+    height: 85vh;
+}
+.card-room-admin{
+    height: 90vh;
+}
 }
 
+/*------ END OF DESKTOP CSS --------*/
 
+
+/*----- MOBILE AND TABLET ----*/
 @media screen and (max-width: 1100px) {
     .items-list{
         width: 27%;
@@ -56,35 +106,32 @@ button{
     .projects-list{
         list-style: none;
     }
-}
-
-@media screen and (max-width: 800px) {
-    .items-list{
-        width: 40%;
-    }
-}
-
-@media screen and (max-width: 450px) {
-    .items-list{
-        width: 100%;
-        margin-left: -20px !important;
-    }
-    .tan-btn{
-        font-size: 12px;
-        padding: 13px 10px !important;
-    }
-    .dark-btn{
-        font-size: 12px;
-        padding: 13px 10px !important;
-    }
-    .projects-list{
-        width: 100%;
-        list-style: none;
-        margin-left: -20px !important;
-    }
+    .navbar-collapse {
+        background: #F8F7F3;
+        margin: 0px -13px -7px -13px;
+        }
+        .norm-menu{
+            display: none;
+        }
+        .navbar-toggler{
+            display: none;
+        }
 }
 
 
+/*----- END OF MOBILE AND TABLET -------*/
+
+
+/*------ INBETWEEN TABLET AND DESKTOP ------*/
+@media only screen and (min-width: 1025px) and (max-width: 1100px){
+    .card-room{
+        width: 30%;
+        display: flex;
+        height: 85vh;
+    }
+}
+
+/*------ END OF INBETWEEN TABLET AND DESKTOP ------*/
 
 
 
@@ -111,12 +158,6 @@ button{
       border-bottom: 1px solid black;
   }
 
-@media only screen and (max-width: 800px) {
-  .navbar-collapse {
-    background: #F8F7F3;
-    margin: 0px -13px -7px -13px;
-    }
-}
 
 .navbar-brand{
     margin-left: 2%;
@@ -127,17 +168,8 @@ button{
     max-width: 150px;
 }
 
-@media only screen and (min-width: 800px) {
-    .mobile-menu{
-        display: none;
-    }
-}
 
-@media only screen and (max-width: 800px) {
-    .norm-menu{
-        display: none;
-    }
-}
+
 
 .nav-img{
     max-width: 200px;
@@ -152,7 +184,7 @@ button{
 }
 
 
-/*-------*/
+
 
 img:hover{
     opacity: 80%;
@@ -270,7 +302,7 @@ img:hover{
 .order {
     position: absolute;
     top: 5%;
-    left: 85%;
+    left: 80%;
     transform: translate(-50%, -50%);
     color: white !important;
     font-size: 12px;

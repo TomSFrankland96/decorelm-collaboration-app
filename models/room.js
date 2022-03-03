@@ -21,7 +21,8 @@ const roomSchema = new Schema({
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }
+    },
+    published: Boolean,
 });
 
 roomSchema.post('findOneAndDelete', async function (doc) {

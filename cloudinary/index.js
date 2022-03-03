@@ -11,7 +11,6 @@ const storage = new CloudinaryStorage({
     cloudinary,
     params: {
         folder: 'Decorelm',
-        allowedFormats: ['jpeg', 'png', 'jpg']
     }
 });
 
