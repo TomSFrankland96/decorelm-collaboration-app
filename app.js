@@ -1,6 +1,6 @@
-if (process.env.NODE_ENV !== "production") {
-    require('dotenv').config();
-}
+// if (process.env.NODE_ENV !== "production") {
+//     require('dotenv').config();
+// }
 
 
 const express = require('express');
@@ -28,7 +28,6 @@ const designRoutes = require('./routes/designs');
 const itemCategoryRoutes = require('./routes/itemCategories');
 const itemRoutes = require('./routes/items');
 const commentRoutes = require('./routes/comments');
-const uploadRoutes = require('./routes/upload');
 
 
 
