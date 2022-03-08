@@ -1,7 +1,6 @@
 const Project = require('../models/project');
 const Room = require('../models/room');
 const Item = require('../models/item');
-const Comment = require('../models/comment')
 const ItemCategory = require('../models/itemCategory');
 
 module.exports.createRoom = async (req, res) => {
@@ -16,7 +15,7 @@ module.exports.createRoom = async (req, res) => {
 };
 
 module.exports.showRoom = async (req, res) => {
-    const { id, roomId, items, comments, itemCategories } = req.params;
+    const { id, roomId, items, itemCategories } = req.params;
     const project = await Project.findById(req.params.id)
     const room = await Room.findById(roomId)
         .populate({
@@ -29,7 +28,7 @@ module.exports.showRoom = async (req, res) => {
         req.flash('error', 'Cannot find that room!');
         return res.redirect(`/projects/${project._id}`);
     }
-    res.render('rooms/show', { room, project, items, comments, itemCategories });
+    res.render('rooms/show', { room, project, items, itemCategories });
 };
 
 module.exports.renderEditForm = async (req, res) => {
@@ -51,7 +50,6 @@ module.exports.updateRoom = async (req, res) => {
     req.flash('success', 'Successfully updated room!');
     res.redirect(`/projects/${project._id}`)
 }
-
 
 module.exports.deleteRoom = async (req, res) => {
     const { id, roomId } = req.params;

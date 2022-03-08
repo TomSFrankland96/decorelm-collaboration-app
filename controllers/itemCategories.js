@@ -3,7 +3,6 @@ const Item = require('../models/item');
 const Project = require('../models/project');
 const ItemCategory = require('../models/itemCategory');
 
-
 module.exports.createItemCategory = async (req, res) => {
     const project = await Project.findByIdAndUpdate(req.params.id);
     const room = await Room.findByIdAndUpdate(req.params.roomId);
@@ -37,7 +36,6 @@ module.exports.updateItemCategory = async (req, res) => {
     req.flash('success', 'Successfully updated category!');
     res.redirect(`/projects/${project._id}/rooms/${room._id}`)
 }
-
 
 module.exports.deleteItemCategory = async (req, res) => {
     const {id, roomId, itemCategoryId} = req.params;
