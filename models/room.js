@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Item = require('./item');
-const Comment = require('./comment');
 const ItemCategory = require('./itemCategory');
 
 const roomSchema = new Schema({
@@ -13,10 +12,6 @@ const roomSchema = new Schema({
             ref: 'Item'
         },
         ref: 'ItemCategory'
-    }],
-    comments: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Comment'
     }],
     author: {
         type: Schema.Types.ObjectId,

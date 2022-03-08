@@ -2,7 +2,6 @@
 //     require('dotenv').config();
 // }
 
-
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -18,18 +17,12 @@ const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const MongoDBStore = require('connect-mongo')(session);
 
-
-
-
 const userRoutes = require('./routes/users');
 const projectRoutes = require('./routes/projects');
 const roomRoutes = require('./routes/rooms');
 const designRoutes = require('./routes/designs');
 const itemCategoryRoutes = require('./routes/itemCategories');
 const itemRoutes = require('./routes/items');
-const commentRoutes = require('./routes/comments');
-
-
 
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
 
@@ -58,6 +51,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(mongoSanitize({
     replaceWith: '_'
 }))
+
 const secret = process.env.SECRET || 'thisshouldbeabettersecret';
 
 const store = new MongoDBStore({
@@ -66,7 +60,7 @@ const store = new MongoDBStore({
     touchAfter: 24 * 60 * 60
 });
 
-store.on('error', function(e) {
+store.on('error', function (e) {
     console.log('session store error', e)
 })
 
@@ -88,6 +82,12 @@ app.use(session(sessionConfig))
 app.use(flash());
 app.use(helmet());
 
+const defaultSrcUrls = [
+    "https://cdn.viglink.com/api/",
+    "http://cdn.viglink.com/api/",
+    "https://api.viglink.com/api/ping"
+]
+
 const scriptSrcUrls = [
     "https://stackpath.bootstrapcdn.com/",
     "https://api.tiles.mapbox.com/",
@@ -95,6 +95,9 @@ const scriptSrcUrls = [
     "https://kit.fontawesome.com/",
     "https://cdnjs.cloudflare.com/",
     "https://cdn.jsdelivr.net",
+    "https://cdn.viglink.com/api/",
+    "http://cdn.viglink.com/api/",
+    "https://api.viglink.com/api/ping"
 ];
 const styleSrcUrls = [
     "https://kit-free.fontawesome.com/",
@@ -113,7 +116,7 @@ const fontSrcUrls = [
 app.use(
     helmet.contentSecurityPolicy({
         directives: {
-            defaultSrc: [],
+            defaultSrc: [...defaultSrcUrls],
             scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
             styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
             workerSrc: ["'self'", "blob:"],
@@ -122,9 +125,10 @@ app.use(
                 "'self'",
                 "blob:",
                 "data:",
-                "https://res.cloudinary.com/drlgdeolb/", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT! 
+                "https://res.cloudinary.com/drlgdeolb/",
                 "https://images.unsplash.com/",
-                "https://blog.decorelm.com"
+                "https://blog.decorelm.com",
+                "https://res.cloudinary.com/decorelm/"
             ],
             fontSrc: ["'self'", ...fontSrcUrls],
         },
@@ -145,27 +149,16 @@ app.use((req, res, next) => {
     next();
 })
 
-
 app.use('/', userRoutes);
 app.use('/projects', projectRoutes);
 app.use('/projects/:id/rooms', roomRoutes);
 app.use('/projects/:id/rooms/:roomId/item-categories', itemCategoryRoutes);
 app.use('/projects/:id/rooms/:roomId/designs', designRoutes);
 app.use('/projects/:id/rooms/:roomId/item-categories/:itemCategoryId/items', itemRoutes);
-app.use('/projects/:id/rooms/:roomId/comments', commentRoutes);
-// app.use('/projects/:id/rooms/:roomId/upload', uploadRoutes);
-
-
 
 app.get('/', (req, res) => {
     res.redirect('/projects')
 });
-
-app.get('/style-questionnaire', (req, res) => {
-    res.render('styleQuiz')
-});
-
-
 
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found', 404))

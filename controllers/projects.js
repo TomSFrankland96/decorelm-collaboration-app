@@ -1,7 +1,5 @@
 const Project = require('../models/project');
 
-
-
 module.exports.index = async (req, res) => {
     const projects = await Project.find({});
     res.render('projects/index', { projects })
@@ -28,7 +26,6 @@ module.exports.showProject = async (req, res,) => {
     }
     res.render('projects/show', { project });
 }
-
 
 module.exports.renderEditForm = async (req, res) => {
     const { id } = req.params;

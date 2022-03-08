@@ -1,7 +1,6 @@
 const Room = require('../models/room');
 const Item = require('../models/item');
 const Project = require('../models/project');
-const { cloudinary } = require("../cloudinary");
 const ItemCategory = require('../models/itemCategory');
 
 module.exports.createItem = async (req, res) => {
@@ -10,7 +9,6 @@ module.exports.createItem = async (req, res) => {
     const itemCategory = await ItemCategory.findById(req.params.itemCategoryId);
     const item = new Item(req.body.item);
     item.image = req.files.map(f => ({ url: f.path, filename: f.filename }));
-    console.log(item.image)
     item.author = req.user._id;
     itemCategory.items.push(item);
     await item.save();
@@ -20,10 +18,7 @@ module.exports.createItem = async (req, res) => {
     res.redirect(`/projects/${project._id}/rooms/${room._id}`)
 };
 
-
-
 module.exports.renderEditForm = async (req, res) => {
-    const { id, roomId, itemCategoryId, itemId } = req.params;
     const project = await Project.findById(req.params.id);
     const room = await Room.findById(req.params.roomId);
     const itemCategory = await ItemCategory.findById(req.params.itemCategoryId);
@@ -36,19 +31,13 @@ module.exports.renderEditForm = async (req, res) => {
 }
 
 module.exports.updateItem = async (req, res) => {
-    const { id, roomId, itemCategoryId, itemId } = req.params;
     const project = await Project.findById(req.params.id);
     const room = await Room.findById(req.params.roomId);
-    const itemCategory = await ItemCategory.findById(req.params.itemCategoryId);
     const item = await Item.findByIdAndUpdate(itemId, { ...req.body.item });
-    if (req.body.deleteRecommended) {
-        await item.updateOne({ $pull: { recommended } })
-    }
     await item.save();
     req.flash('success', 'Successfully updated item!');
     res.redirect(`/projects/${project._id}/rooms/${room._id}`)
 }
-
 
 module.exports.deleteItem = async (req, res) => {
     const {id, roomId, itemCategoryId, itemId} = req.params;

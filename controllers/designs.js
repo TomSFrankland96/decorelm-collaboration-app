@@ -3,8 +3,6 @@ const Room = require('../models/room');
 const Item = require('../models/item');
 const Design = require('../models/design');
 
-
-
 module.exports.createDesign = async (req, res) => {
     const project = await Project.findById(req.params.id);
     const room = await Room(req.body.room);
@@ -44,7 +42,6 @@ module.exports.updateRoom = async (req, res) => {
     req.flash('success', 'Successfully updated room!');
     res.redirect(`/projects/${project._id}`)
 }
-
 
 module.exports.deleteRoom = async (req, res) => {
     const { id, roomId } = req.params;

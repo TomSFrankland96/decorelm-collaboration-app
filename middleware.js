@@ -1,9 +1,8 @@
-const { projectSchema, roomSchema, itemSchema, commentSchema, itemCategorySchema, designSchema } = require('./schemas.js');
+const { projectSchema, roomSchema, itemSchema, itemCategorySchema, designSchema } = require('./schemas.js');
 const ExpressError = require('./utils/ExpressError');
 const Project = require('./models/project.js');
 const Room = require('./models/room.js');
 const Item = require('./models/item.js');
-const Comment = require('./models/comment.js');
 const ItemCategory = require('./models/itemCategory.js');
 const Design = require('./models/design.js');
 
@@ -78,16 +77,6 @@ module.exports.validateItemCategory = (req, res, next) => {
 
 module.exports.validateItem = (req, res, next) => {
     const { error } = itemSchema.validate(req.body);
-    if(error){
-        const msg = error.details.map(el => el.message).join(',')
-        throw new ExpressError(msg, 400)
-    } else {
-        next();
-    }
-}
-
-module.exports.validateComment = (req, res, next) => {
-    const { error } = commentSchema.validate(req.body);
     if(error){
         const msg = error.details.map(el => el.message).join(',')
         throw new ExpressError(msg, 400)
