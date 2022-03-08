@@ -60,3 +60,12 @@ module.exports.deleteRoom = async (req, res) => {
     req.flash('success', 'Successfully deleted room');
     res.redirect(`/projects/${id}`);
 }
+
+module.exports.publishRoom = async (req, res) => {
+    const { id, roomId } = req.params;
+    const project = await Project.findById(req.params.id);
+    const room = await Room.findById(roomId, { ...req.body.room });
+    room.published = true;
+    await Room.findByIdAndUpdate(roomId)
+    res.redirect(`/projects/${id}`)
+}

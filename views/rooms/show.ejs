@@ -54,10 +54,10 @@
 
 
 
-  <div class="my-2 justify-content-center">
+  <div class="my-2 justify-content-center d-flex flex-wrap justify-content-between">
     <% if(room.itemCategories.length> 0) { %>
       <% for (let itemCategory of room.itemCategories) { %>
-        <div class="card card-room mb-3 shadow d-inline-flex mx-3">
+        <div class="card card-room my-5 shadow d-inline-flex mx-2">
           <% if( currentUser && room.author.equals(currentUser._id)) {%>
             <div>
               <div class="d-flex justify-content-between">
@@ -197,7 +197,7 @@
               <div id="itemCarousel<%= itemCategory._id %>" class="carousel slide" data-ride="carousel"
                 data-bs-interval="false">
                 <div class="carousel-inner">
-                  <% if(itemCategory.items.length > 0) { %>
+                  <% if(itemCategory.items.length> 0) { %>
                     <% for(let item of itemCategory.items) { %>
                       <% if(item===itemCategory.items[0]) {%>
                         <div class="carousel-item active">
@@ -242,11 +242,12 @@
                                 <%= item.name %>
                               </li>
                               <li class="list-group-item card-text">
-                                <%= item.brand %> <% if(item.price){ %>
-                                  <%= ` - £${item.price}` %>
-                                <% } else{ %>  
-                                  <span></span>
-                               <% } %>
+                                <%= item.brand %>
+                                  <% if(item.price){ %>
+                                    <%= ` - £${item.price}` %>
+                                      <% } else{ %>
+                                        <span></span>
+                                        <% } %>
                               </li>
                               <% if(item.comment) {%>
                                 <li class="list-group-item card-text">
@@ -256,9 +257,9 @@
                                   <li class="list-group-item rm-b card-text">
                                     <p> </p>
                                   </li>
-                                  <% } %> 
-                                  <li class="list-group-item card-text text-center mt-3"><a href="<%= item.link %>"
-                                      class="card-link btn view" target="_blank">View</a></li>
+                                  <% } %>
+                                    <li class="list-group-item card-text text-center mt-3"><a href="<%= item.link %>"
+                                        class="card-link btn view" target="_blank">View</a></li>
                             </ul>
                             <% if( currentUser && room.author.equals(currentUser._id)) {%>
                               <form
@@ -320,11 +321,12 @@
                                   <%= item.name %>
                                 </li>
                                 <li class="list-group-item card-text">
-                                  <%= item.brand %><% if(item.price){ %>
-                                    <%= ` - £${item.price}` %>
-                                  <% } else{ %>  
-                                    <span></span>
-                                 <% } %>
+                                  <%= item.brand %>
+                                    <% if(item.price){ %>
+                                      <%= ` - £${item.price}` %>
+                                        <% } else{ %>
+                                          <span></span>
+                                          <% } %>
                                 </li>
                                 <% if(item.comment) {%>
                                   <li class="list-group-item card-text">
@@ -334,10 +336,10 @@
                                     <li class="list-group-item rm-b card-text">
                                       <p> </p>
                                     </li>
-                                    <% } %> 
-                                    <li class="list-group-item card-text text-center mt-3"><a href="<%= item.link %>"
-                                        class="card-link btn view" target="_blank">View</a>
-                                    </li>
+                                    <% } %>
+                                      <li class="list-group-item card-text text-center mt-3"><a href="<%= item.link %>"
+                                          class="card-link btn view" target="_blank">View</a>
+                                      </li>
                               </ul>
                               <% if( currentUser && room.author.equals(currentUser._id)) {%>
                                 <form

@@ -14,6 +14,8 @@ const catchAsync = require('../utils/catchAsync');
 
 router.post('/', isLoggedIn, validateRoom, catchAsync(rooms.createRoom))
 
+router.post('/:roomId', isLoggedIn, catchAsync(rooms.publishRoom))
+
 router.get('/:roomId', catchAsync(rooms.showRoom))
 
 router.route('/:roomId')
