@@ -1,5 +1,4 @@
 const Room = require('../models/room');
-const Item = require('../models/item');
 const Project = require('../models/project');
 const ItemCategory = require('../models/itemCategory');
 
@@ -16,7 +15,7 @@ module.exports.createItemCategory = async (req, res) => {
 };
 
 module.exports.renderEditForm = async (req, res) => {
-    const { id, roomId, itemCategoryId } = req.params;
+    const { itemCategoryId } = req.params;
     const project = await Project.findById(req.params.id);
     const room = await Room.findById(req.params.roomId);
     const itemCategory = await ItemCategory.findById(itemCategoryId)
@@ -28,7 +27,7 @@ module.exports.renderEditForm = async (req, res) => {
 }
 
 module.exports.updateItemCategory = async (req, res) => {
-    const { id, roomId, itemCategoryId } = req.params;
+    const { itemCategoryId } = req.params;
     const project = await Project.findById(req.params.id);
     const room = await Room.findById(req.params.roomId);
     const itemCategory = await ItemCategory.findByIdAndUpdate(itemCategoryId, { ...req.body.itemCategory });

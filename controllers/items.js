@@ -19,6 +19,7 @@ module.exports.createItem = async (req, res) => {
 };
 
 module.exports.renderEditForm = async (req, res) => {
+    const { itemId } = req.params;
     const project = await Project.findById(req.params.id);
     const room = await Room.findById(req.params.roomId);
     const itemCategory = await ItemCategory.findById(req.params.itemCategoryId);
@@ -31,6 +32,7 @@ module.exports.renderEditForm = async (req, res) => {
 }
 
 module.exports.updateItem = async (req, res) => {
+    const { itemId } = req.params;
     const project = await Project.findById(req.params.id);
     const room = await Room.findById(req.params.roomId);
     const item = await Item.findByIdAndUpdate(itemId, { ...req.body.item });
@@ -40,7 +42,7 @@ module.exports.updateItem = async (req, res) => {
 }
 
 module.exports.deleteItem = async (req, res) => {
-    const {id, roomId, itemCategoryId, itemId} = req.params;
+    const { id, roomId, itemCategoryId, itemId } = req.params;
     await Project.findByIdAndUpdate(id);
     await Room.findByIdAndUpdate(roomId);
     await ItemCategory.findByIdAndUpdate(itemCategoryId, { $pull: { items: itemId } });

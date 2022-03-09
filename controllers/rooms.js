@@ -1,7 +1,5 @@
 const Project = require('../models/project');
 const Room = require('../models/room');
-const Item = require('../models/item');
-const ItemCategory = require('../models/itemCategory');
 
 module.exports.createRoom = async (req, res) => {
     const project = await Project.findById(req.params.id);
@@ -15,7 +13,7 @@ module.exports.createRoom = async (req, res) => {
 };
 
 module.exports.showRoom = async (req, res) => {
-    const { id, roomId, items, itemCategories } = req.params;
+    const { roomId, items, itemCategories } = req.params;
     const project = await Project.findById(req.params.id)
     const room = await Room.findById(roomId)
         .populate({
@@ -32,7 +30,7 @@ module.exports.showRoom = async (req, res) => {
 };
 
 module.exports.renderEditForm = async (req, res) => {
-    const { id, roomId } = req.params;
+    const { roomId } = req.params;
     const project = await Project.findById(req.params.id);
     const room = await Room.findById(roomId);
     if (!room) {
@@ -43,7 +41,7 @@ module.exports.renderEditForm = async (req, res) => {
 }
 
 module.exports.updateRoom = async (req, res) => {
-    const { id, roomId } = req.params;
+    const { roomId } = req.params;
     const project = await Project.findById(req.params.id);
     const room = await Room.findByIdAndUpdate(roomId, { ...req.body.room });
     await room.save();
