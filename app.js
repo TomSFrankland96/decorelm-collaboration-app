@@ -129,9 +129,10 @@ app.use(
                 "blob:",
                 "data:",
                 "https://res.cloudinary.com/drlgdeolb/",
+                "https://res.cloudinary.com/dhiwlvpg7/",
+                "https://res.cloudinary.com/decorelm/",
                 "https://images.unsplash.com/",
                 "https://blog.decorelm.com",
-                "https://res.cloudinary.com/decorelm/",
                 "https://api.viglink.com/api/sync.gif"
             ],
             fontSrc: ["'self'", ...fontSrcUrls],
