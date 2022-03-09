@@ -100,7 +100,7 @@ const scriptSrcUrls = [
     "http://cdn.viglink.com/api/",
     "https://api.viglink.com/api/ping",
     "https://api.viglink.com/api/domains",
-    "https://api.viglink.com/api/sync.js?key=20d433d94deccc693573a9890bf52e62"
+    "https://api.viglink.com/api/sync"
 ];
 const styleSrcUrls = [
     "https://kit-free.fontawesome.com/",
@@ -132,7 +132,7 @@ app.use(
                 "https://images.unsplash.com/",
                 "https://blog.decorelm.com",
                 "https://res.cloudinary.com/decorelm/",
-                "https://api.viglink.com/api/sync.gif?key=20d433d94deccc693573a9890bf52e62"
+                "https://api.viglink.com/api/sync"
             ],
             fontSrc: ["'self'", ...fontSrcUrls],
         },
