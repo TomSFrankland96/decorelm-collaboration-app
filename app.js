@@ -85,7 +85,8 @@ app.use(helmet());
 const defaultSrcUrls = [
     "https://cdn.viglink.com/api/",
     "http://cdn.viglink.com/api/",
-    "https://api.viglink.com/api/ping"
+    "https://api.viglink.com/api/ping",
+    "https://api.viglink.com/api/domains"
 ]
 
 const scriptSrcUrls = [
@@ -97,7 +98,9 @@ const scriptSrcUrls = [
     "https://cdn.jsdelivr.net",
     "https://cdn.viglink.com/api/",
     "http://cdn.viglink.com/api/",
-    "https://api.viglink.com/api/ping"
+    "https://api.viglink.com/api/ping",
+    "https://api.viglink.com/api/domains",
+    "https://api.viglink.com/api/sync.js?key=20d433d94deccc693573a9890bf52e62"
 ];
 const styleSrcUrls = [
     "https://kit-free.fontawesome.com/",
@@ -128,7 +131,8 @@ app.use(
                 "https://res.cloudinary.com/drlgdeolb/",
                 "https://images.unsplash.com/",
                 "https://blog.decorelm.com",
-                "https://res.cloudinary.com/decorelm/"
+                "https://res.cloudinary.com/decorelm/",
+                "https://api.viglink.com/api/sync.gif?key=20d433d94deccc693573a9890bf52e62"
             ],
             fontSrc: ["'self'", ...fontSrcUrls],
         },
