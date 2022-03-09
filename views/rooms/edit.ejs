@@ -2,13 +2,20 @@
     <div class="row">
         <h1 class="text-center">Edit Room</h1>
         <div class="col-md-6 offset-md-3 mb-5">
-            <form
-                action="/projects/<%= project._id %>/rooms/<%= room._id %>?_method=PUT"
-                method="POST" novalidate class="validated-form">
+            <form action="/projects/<%= project._id %>/rooms/<%= room._id %>?_method=PUT" method="POST" novalidate
+                class="validated-form">
                 <div class="mb-3">
                     <label class="form-label" for="title">Room Name</label>
-                    <input class="form-control" name="room[title]" value="<%= room.title %>" id="title"
-                        cols="30" rows="1" required></input>
+                    <input class="form-control" name="room[title]" value="<%= room.title %>" id="title" cols="30"
+                        rows="1" required></input>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="render">3D Render Link</label>
+                    <textarea class="form-control" name="room[render]" value="<%= room.render %>" id="render" cols="30"
+                        rows="1"></textarea>
                     <div class="valid-feedback">
                         Looks good!
                     </div>

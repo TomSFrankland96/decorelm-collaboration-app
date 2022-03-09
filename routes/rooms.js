@@ -17,6 +17,8 @@ router.route('/:roomId')
 
 router.get('/:roomId/edit', isLoggedIn, isRoomAuthor, catchAsync(rooms.renderEditForm))
 
+router.get('/:roomId/render', catchAsync(rooms.showRender))
+
 router.delete('/:roomId', isLoggedIn, isRoomAuthor, catchAsync(rooms.deleteRoom))
 
 module.exports = router;

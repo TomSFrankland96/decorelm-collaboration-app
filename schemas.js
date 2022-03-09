@@ -34,7 +34,8 @@ module.exports.projectSchema = Joi.object({
 
 module.exports.roomSchema = Joi.object({
     room: Joi.object({
-        title: Joi.string().required().escapeHTML()
+        title: Joi.string().required().escapeHTML(),
+        render: Joi.string().optional().allow('')
     }).required()
 })
 
@@ -54,12 +55,12 @@ module.exports.itemSchema = Joi.object({
         comment: Joi.string().optional().allow('')
     }),
     deleteImages: Joi.array(),
-    
+
 })
 
 module.exports.designSchema = Joi.object({
     design: Joi.object({
-    title: Joi.string().required(),
-    link: Joi.string().required(),
+        title: Joi.string().required(),
+        link: Joi.string().required(),
     }).required(),
 })
