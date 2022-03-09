@@ -1,11 +1,7 @@
 const express = require('express');
 const router = express.Router({ mergeParams: true });
-const { validateItem, validateRoom, isLoggedIn, isRoomAuthor } = require('../middleware');
-const Project = require('../models/project');
-const Room = require('../models/room');
-const Item = require('../models/item.js');
+const { validateItem, isLoggedIn, isRoomAuthor } = require('../middleware');
 const items = require('../controllers/items');
-const rooms = require('../controllers/rooms');
 const ExpressError = require('../utils/ExpressError');
 const catchAsync = require('../utils/catchAsync');
 const multer = require('multer');

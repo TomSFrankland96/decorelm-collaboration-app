@@ -86,7 +86,8 @@ const defaultSrcUrls = [
     "https://cdn.viglink.com/api/",
     "http://cdn.viglink.com/api/",
     "https://api.viglink.com/api/ping",
-    "https://api.viglink.com/api/domains"
+    "https://api.viglink.com/api/domains",
+    "https://floorplanner.com/"
 ]
 
 const scriptSrcUrls = [

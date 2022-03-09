@@ -29,6 +29,17 @@ module.exports.showRoom = async (req, res) => {
     res.render('rooms/show', { room, project, items, itemCategories });
 };
 
+module.exports.showRender = async (req, res) => {
+    const { roomId } = req.params;
+    const project = await Project.findById(req.params.id)
+    const room = await Room.findById(roomId)
+    if (!project || !room) {
+        req.flash('error', 'Cannot find that render!');
+        return res.redirect(`/projects/${project._id}`);
+    }
+    res.render('rooms/showRender', { room, project });
+};
+
 module.exports.renderEditForm = async (req, res) => {
     const { roomId } = req.params;
     const project = await Project.findById(req.params.id);

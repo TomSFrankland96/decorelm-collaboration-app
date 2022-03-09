@@ -13,6 +13,7 @@ const roomSchema = new Schema({
         },
         ref: 'ItemCategory'
     }],
+    render: String,
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User'
