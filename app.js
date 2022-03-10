@@ -134,7 +134,8 @@ app.use(
             fontSrc: ["'self'", ...fontSrcUrls],
             frameSrc: [
                 "'self'",
-                "https://floorplanner.com/"
+                "https://floorplanner.com/",
+                "https://vars.hotjar.com/"
             ]
         },
     })
