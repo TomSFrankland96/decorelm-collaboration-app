@@ -102,7 +102,7 @@ const styleSrcUrls = [
     "https://api.tiles.mapbox.com/",
     "https://fonts.googleapis.com/",
     "https://use.fontawesome.com/",
-    "https://static.hotjar.com/"
+    "https://static.hotjar.com/c/hotjar-2870171.js?sv=6"
 ];
 
 const fontSrcUrls = [
