@@ -136,6 +136,10 @@ app.use(
                 "'self'",
                 "https://floorplanner.com/",
                 "https://vars.hotjar.com/"
+            ],
+            connectSrc: [
+                "https://in.hotjar.com/api/",
+                "https://vc.hotjar.io/sessions/"
             ]
         },
     })
