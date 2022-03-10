@@ -20,7 +20,7 @@ module.exports.showDesigns = async (req, res) => {
     const { id, roomId, designs } = req.params;
     const project = await Project.findById(req.params.id)
     const room = await Room.findById(roomId).populate('designs');
-    res.render('rooms/designs', { room, project, designs });
+    res.render('rooms/showDesigns', { room, project, designs });
 };
 
 module.exports.renderEditForm = async (req, res) => {

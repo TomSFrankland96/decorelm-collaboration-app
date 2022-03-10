@@ -82,14 +82,6 @@ app.use(session(sessionConfig))
 app.use(flash());
 app.use(helmet());
 
-const defaultSrcUrls = [
-    "https://cdn.viglink.com/api/",
-    "http://cdn.viglink.com/api/",
-    "https://api.viglink.com/api/ping",
-    "https://api.viglink.com/api/domains",
-    "https://floorplanner.com/"
-]
-
 const scriptSrcUrls = [
     "https://stackpath.bootstrapcdn.com/",
     "https://api.tiles.mapbox.com/",
@@ -101,7 +93,7 @@ const scriptSrcUrls = [
     "http://cdn.viglink.com/api/",
     "https://api.viglink.com/api/ping",
     "https://api.viglink.com/api/domains",
-    "https://api.viglink.com/api/sync.js"
+    "https://api.viglink.com/api/sync.js",
 ];
 const styleSrcUrls = [
     "https://kit-free.fontawesome.com/",
@@ -117,10 +109,11 @@ const fontSrcUrls = [
     "https://fonts.gstatic.com"
 ];
 
+
 app.use(
     helmet.contentSecurityPolicy({
         directives: {
-            defaultSrc: [...defaultSrcUrls],
+            defaultSrc: [],
             scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
             styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
             workerSrc: ["'self'", "blob:"],
@@ -137,6 +130,10 @@ app.use(
                 "https://api.viglink.com/api/sync.gif"
             ],
             fontSrc: ["'self'", ...fontSrcUrls],
+            frameSrc: [
+                "'self'",
+                "https://floorplanner.com/"
+            ]
         },
     })
 );

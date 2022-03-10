@@ -12,7 +12,7 @@ const catchAsync = require('../utils/catchAsync');
 
 router.post('/', isLoggedIn, validateDesign, catchAsync(designs.createDesign))
 
-router.get('/:designId', catchAsync(designs.showDesign))
+router.get('/:designId', catchAsync(designs.showDesigns))
 
 router.route('/:designId')
     .put(isLoggedIn, isRoomAuthor, validateDesign, catchAsync(designs.updateDesign))
