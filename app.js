@@ -94,7 +94,8 @@ const scriptSrcUrls = [
     "https://api.viglink.com/api/ping",
     "https://api.viglink.com/api/domains",
     "https://api.viglink.com/api/sync.js",
-    "https://static.hotjar.com/"
+    "https://static.hotjar.com/",
+    "https://script.hotjar.com/"
 ];
 const styleSrcUrls = [
     "https://kit-free.fontawesome.com/",
