@@ -94,6 +94,7 @@ const scriptSrcUrls = [
     "https://api.viglink.com/api/ping",
     "https://api.viglink.com/api/domains",
     "https://api.viglink.com/api/sync.js",
+    "https://static.hotjar.com/"
 ];
 const styleSrcUrls = [
     "https://kit-free.fontawesome.com/",
@@ -101,8 +102,7 @@ const styleSrcUrls = [
     "https://api.mapbox.com/",
     "https://api.tiles.mapbox.com/",
     "https://fonts.googleapis.com/",
-    "https://use.fontawesome.com/",
-    "https://static.hotjar.com/c/hotjar-2870171.js?sv=6"
+    "https://use.fontawesome.com/"
 ];
 
 const fontSrcUrls = [
