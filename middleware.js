@@ -11,8 +11,9 @@ module.exports.isLoggedIn = (req, res, next) => {
         req.session.returnTo = req.originalUrl
         req.flash('error', 'You must be signed in first!');
         return res.redirect('/15111996');
+    } else {
+        next();
     }
-    next();
 }
 
 module.exports.validateProject = (req, res, next) => {
@@ -31,8 +32,9 @@ module.exports.isAuthor = async (req, res, next) => {
     if (!project.author.equals(req.user._id)) {
         req.flash('error', 'You do not have permission to do that!');
         return res.redirect(`/projects/${id}`);
+    } else {
+        next();
     }
-    next();
 }
 
 module.exports.isRoomAuthor = async (req, res, next) => {
@@ -41,8 +43,9 @@ module.exports.isRoomAuthor = async (req, res, next) => {
     if (!room.author.equals(req.user._id)) {
         req.flash('error', 'You do not have permission to do that!');
         return res.redirect(`/projects/${id}`);
+    } else {
+        next();
     }
-    next();
 }
 
 module.exports.validateRoom = (req, res, next) => {
@@ -67,7 +70,7 @@ module.exports.validateDesign = (req, res, next) => {
 
 module.exports.validateItemCategory = (req, res, next) => {
     const { error } = itemCategorySchema.validate(req.body);
-    if(error){
+    if (error) {
         const msg = error.details.map(el => el.message).join(',')
         throw new ExpressError(msg, 400)
     } else {
@@ -77,7 +80,7 @@ module.exports.validateItemCategory = (req, res, next) => {
 
 module.exports.validateItem = (req, res, next) => {
     const { error } = itemSchema.validate(req.body);
-    if(error){
+    if (error) {
         const msg = error.details.map(el => el.message).join(',')
         throw new ExpressError(msg, 400)
     } else {

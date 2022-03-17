@@ -15,9 +15,9 @@ module.exports.createItemCategory = async (req, res) => {
 };
 
 module.exports.renderEditForm = async (req, res) => {
-    const { itemCategoryId } = req.params;
-    const project = await Project.findById(req.params.id);
-    const room = await Room.findById(req.params.roomId);
+    const { id, roomId, itemCategoryId } = req.params;
+    const project = await Project.findById(id);
+    const room = await Room.findById(roomId);
     const itemCategory = await ItemCategory.findById(itemCategoryId)
     if (!itemCategory) {
         req.flash('error', 'Cannot find that category!');

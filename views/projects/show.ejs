@@ -1,6 +1,6 @@
 <% layout('layouts/boilerplate')%>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-5">
       <div class="card mb-3">
         <div class="card-body">
           <h3 class="card-title project-title">
@@ -55,7 +55,7 @@
             </div>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-7">
       <% if(currentUser){ %>
         <div class="border p-4">
           <h2>Add Rooms</h2>
@@ -78,44 +78,76 @@
           </form>
         </div>
         <% } %>
-          <% if(project.rooms.length> 0) { %>
-            <% for (let room of project.rooms) { %>
-              <% if(room.published !==true) { %>
-                <div class="card mb-3 shadow">
-                  <div class="card-body">
-                    <span class="tag">ROOM</span>
-                    <h4>
-                      <%= room.title %>
-                        <% if(currentUser){ %><a href="/projects/<%=project._id%>/rooms/<%= room._id %>/edit">Edit</a>
-                          <% } %>
-                    </h4>
-                    <div class="d-flex justify-content-between">
-                      <a href="/projects/<%= project._id %>/rooms/<%= room._id %>" class="btn view">View Items</a>
-                      <% if(room.render) { %>
-                        <a href="/projects/<%= project._id %>/rooms/<%= room._id %>/render" class="btn view">View 3D
-                          Render</a>
-                        <% } %>
-                          <!-- <a href="/projects/<%= project._id %>/rooms/<%= room._id %>/designs" class="btn view">View Designs</a> -->
-                          <% if( currentUser && room.author.equals(currentUser._id)) {%>
-                            <form action="/projects/<%= project._id %>/rooms/<%= room._id %>?_method=DELETE"
-                              method="POST">
-                              <button class="btn delete"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                  fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                  <path
-                                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                                  <path fill-rule="evenodd"
-                                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                                </svg>
-                              </button>
-                            </form>
+          <div class="room-box">
+            <% if(project.rooms.length> 0) { %>
+              <% for (let room of project.rooms) { %>
+                <% if(room.published !==true) { %>
+                  <div class="card mb-3 shadow">
+                    <div class="card-body">
+                      <span class="tag">ROOM</span>
+                      <h4>
+                        <%= room.title %>
+                          <% if(currentUser){ %><a href="/projects/<%=project._id%>/rooms/<%= room._id %>/edit">Edit</a>
                             <% } %>
+                      </h4>
+                      <div class="container">
+                        <div class="row">
+                          <% if(room.designs.length || currentUser && room.author.equals(currentUser._id)) { %>
+                            <div class="col-lg-4 my-2">
+                              <a href="/projects/<%= project._id %>/rooms/<%= room._id %>/designs" class="btn view">View
+                                Designs<br> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                  fill="currentColor" class="bi bi-rulers" viewBox="0 0 16 16">
+                                  <path
+                                    d="M1 0a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h5v-1H2v-1h4v-1H4v-1h2v-1H2v-1h4V9H4V8h2V7H2V6h4V2h1v4h1V4h1v2h1V2h1v4h1V4h1v2h1V2h1v4h1V1a1 1 0 0 0-1-1H1z" />
+                                </svg></a>
+                            </div>
+                            <% } %>
+                              <% if(room.render) { %>
+                                <div class="col-lg-4 my-2">
+                                  <a href="/projects/<%= project._id %>/rooms/<%= room._id %>/render"
+                                    class="btn view">View
+                                    3D
+                                    Render<br> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                      fill="currentColor" class="bi bi-display" viewBox="0 0 16 16">
+                                      <path
+                                        d="M0 4s0-2 2-2h12s2 0 2 2v6s0 2-2 2h-4c0 .667.083 1.167.25 1.5H11a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1h.75c.167-.333.25-.833.25-1.5H2s-2 0-2-2V4zm1.398-.855a.758.758 0 0 0-.254.302A1.46 1.46 0 0 0 1 4.01V10c0 .325.078.502.145.602.07.105.17.188.302.254a1.464 1.464 0 0 0 .538.143L2.01 11H14c.325 0 .502-.078.602-.145a.758.758 0 0 0 .254-.302 1.464 1.464 0 0 0 .143-.538L15 9.99V4c0-.325-.078-.502-.145-.602a.757.757 0 0 0-.302-.254A1.46 1.46 0 0 0 13.99 3H2c-.325 0-.502.078-.602.145z" />
+                                    </svg></a>
+                                </div>
+                                <% } %>
+                                  <% if(room.itemCategories.length> 0 || currentUser &&
+                                    room.author.equals(currentUser._id)) { %>
+                                    <div class="col-lg-4 my-2">
+                                      <a href="/projects/<%= project._id %>/rooms/<%= room._id %>" class="btn view">View
+                                        Items<br>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                          fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                          <path
+                                            d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                                        </svg></a>
+                                    </div>
+                                    <% } %>
+                                      <% if( currentUser && room.author.equals(currentUser._id)) {%>
+                                        <form action="/projects/<%= project._id %>/rooms/<%= room._id %>?_method=DELETE"
+                                          method="POST">
+                                          <button class="btn delete"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                              height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                              <path
+                                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                              <path fill-rule="evenodd"
+                                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                            </svg>
+                                          </button>
+                                        </form>
+                                        <% } %>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <% } else { null } %>
-                  <% } %>
-                    <% } else {%>
-                      <p>You don't have any rooms yet :(</p>
-                      <% } %>
+                  <% } else { null } %>
+                    <% } %>
+                      <% } else {%>
+                        <p>You don't have any rooms yet :(</p>
+                        <% } %>
+          </div>
     </div>
   </div>

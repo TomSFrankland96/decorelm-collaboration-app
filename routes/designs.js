@@ -8,17 +8,20 @@ const Design = require('../models/design');
 const designs = require('../controllers/designs');
 const ExpressError = require('../utils/ExpressError');
 const catchAsync = require('../utils/catchAsync');
+const multer = require('multer');
+const { storage } = require('../cloudinary');
+const upload = multer({ storage });
 
 
-router.post('/', isLoggedIn, validateDesign, catchAsync(designs.createDesign))
+router.post('/', isLoggedIn, upload.array('image'), catchAsync(designs.createDesign))
 
-router.get('/:designId', catchAsync(designs.showDesigns))
+router.get('/', catchAsync(designs.showDesigns))
 
 router.route('/:designId')
     .put(isLoggedIn, isRoomAuthor, validateDesign, catchAsync(designs.updateDesign))
 
 router.get('/:designId/edit', isLoggedIn, isRoomAuthor, catchAsync(designs.renderEditForm))
 
-router.delete('/:designId', isLoggedIn, isRoomAuthor, catchAsync(rooms.deleteDesign))
+router.delete('/:designId', isLoggedIn, isRoomAuthor, catchAsync(designs.deleteDesign))
 
 module.exports = router;

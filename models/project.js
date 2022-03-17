@@ -25,6 +25,10 @@ const ProjectSchema = new Schema({
                 },
                 ref: 'ItemCategory'
             },
+            designs: {
+                type: Schema.Types.ObjectId,
+                ref: 'Design'
+            },
             ref: 'Room'
         }
     ]

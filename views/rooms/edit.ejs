@@ -6,16 +6,16 @@
                 class="validated-form">
                 <div class="mb-3">
                     <label class="form-label" for="title">Room Name</label>
-                    <input class="form-control" name="room[title]" value="<%= room.title %>" id="title" cols="30"
-                        rows="1" required></input>
+                    <input class="form-control" name="room[title]" id="title" cols="30"
+                        rows="1" required value="<%= room.title %>"></input>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="render">3D Render Link</label>
-                    <textarea class="form-control" name="room[render]" value="<%= room.render %>" id="render" cols="30"
-                        rows="1"></textarea>
+                    <textarea class="form-control" name="room[render]" id="render" cols="30"
+                        rows="1"><%= room.render %></textarea>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
