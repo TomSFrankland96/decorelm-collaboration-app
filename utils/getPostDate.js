@@ -21,7 +21,7 @@ function getPostDate() {
 
     let suffix = hours >= 12 ? "PM":"AM";
 
-    let minutesFix = minutes >= 10 ? "0" + minutes : minutes;
+    let minutesFix = minutes < 10 ? "0" + minutes : minutes;
 
     // prints date & time in YYYY-MM-DD HH:MM:SS format
     return(date + "/" + month + "/" + year + " " + hours + ":" + minutesFix + suffix);

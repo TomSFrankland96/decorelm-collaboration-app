@@ -53,7 +53,7 @@
     .card-room{
         width: 45%;
         display: flex;
-        height: 65vh;
+        min-height: 65vh;
     }
 }
 
@@ -85,10 +85,10 @@ button{
 .card-room{
     width: 22%;
     display: flex;
-    height: 85vh;
+    min-height: 85vh;
 }
 .card-room-admin{
-    height: 90vh;
+    min-height: 90vh;
 }
 }
 
@@ -136,7 +136,7 @@ button{
     .card-room{
         width: 30%;
         display: flex;
-        height: 85vh;
+        min-height: 85vh;
     }
 }
 
