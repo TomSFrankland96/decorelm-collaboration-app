@@ -9,8 +9,12 @@
     text-transform: uppercase;
     font-family: 'Raleway';
     font-size: 12px !important;
+    color: white;
 }
 
+.background{
+  background-color: #f8f7f3;
+}
 
 /*---- MOBILE CSS ------*/
 
@@ -216,7 +220,7 @@ img:hover{
 
 
 .tan-btn{
-    background-color: #E9E7DC;
+    background-color: #292929;
     letter-spacing: 1.5px;
     font-size: 14px;
     padding: 17px 40px;
@@ -247,7 +251,7 @@ img:hover{
 
 
 .add-item{
-    background-color: #E9E7DC;
+    background-color: #292929;
     letter-spacing: 1.5px;
     font-size: 10px;
     padding: 10px 15px;
@@ -260,7 +264,7 @@ img:hover{
 }
 
 .view{
-        background-color: #E9E7DC;
+        background-color: #292929;
         letter-spacing: 2px;
         font-size: 13px;
         padding: 10px 30px;
@@ -371,11 +375,11 @@ img:hover{
     font-size: 25px;
 }
 
-
 .project-des{
     font-family: 'Raleway';
-    letter-spacing: 1px;
+    letter-spacing: 0.3px;
     font-size: 13px;
+    color: #2a2a2ab7;
 }
 
 .list-group-item{

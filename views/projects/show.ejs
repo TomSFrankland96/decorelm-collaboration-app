@@ -105,7 +105,7 @@
                               <% if(room.render) { %>
                                 <div class="col-lg-4 my-2">
                                   <a href="/projects/<%= project._id %>/rooms/<%= room._id %>/render"
-                                    class="btn view">View
+                                    class="btn view tan-btn">View
                                     3D
                                     Render<br> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                       fill="currentColor" class="bi bi-display" viewBox="0 0 16 16">
@@ -117,7 +117,7 @@
                                   <% if(room.itemCategories.length> 0 || currentUser &&
                                     room.author.equals(currentUser._id)) { %>
                                     <div class="col-lg-4 my-2">
-                                      <a href="/projects/<%= project._id %>/rooms/<%= room._id %>" class="btn view">View
+                                      <a href="/projects/<%= project._id %>/rooms/<%= room._id %>" class="btn view tan-btn">View
                                         Items<br>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                           fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
