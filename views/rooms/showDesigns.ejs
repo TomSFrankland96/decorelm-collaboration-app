@@ -107,7 +107,7 @@
 
                 <div class="card-body">
                   <div class="row">
-                    <div class="col-md-8 p-2">
+                    <div class="p-2">
                       <span class="design-tag">DESIGN</span>
                       <h4 class="design-title">
                         <%= design.name %>
@@ -128,22 +128,6 @@
                             Design</a>
                         </div>
                       </a>
-                    </div>
-                    <div class="col-md-4 d-flex flex-column">
-                      <div class="text-right time-posted"><%= design.datePosted %></div>
-                      <div class="my-auto">
-                        <h4>Notes:</h4>
-                        <p class="card-text project-des">
-                          <%= design.notes %>
-                        </p>
-                        <a class="btn view-design d-block mx-auto" href="<%= design.image[0].url %>"
-                          target="_blank">View
-                          Design <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-arrow-right-short" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                              d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
-                          </svg></a>
-                      </div>
                     </div>
                   </div>
                 </div>
