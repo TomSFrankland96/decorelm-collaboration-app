@@ -30,7 +30,7 @@
                 <div class="modal-body">
                   <h2>Add Design</h2>
                   <form action="/projects/<%= project._id %>/rooms/<%= room._id %>/designs" method="POST"
-                    class="mb-3 validated-form" enctype="multipart/form-data">
+                    class="mb-3 validated-form">
                     <div class="mb-3">
                       <label class="form-label" for="name">Design Name</label>
                       <textarea class="form-control" name="design[name]" id="name" cols="30" rows="1"
@@ -117,11 +117,7 @@
                       </h4>
                       <a href="<%= design.image[0].url %>" target="_blank">
                         <div class="designImg">
-                          <% if (design.image[0].url !== 'https://decorelm.s3.eu-west-2.amazonaws.com/Master+Bedroom+-+Initial+Design+Presentation.pdf') { %>
-                            <img src="<%= design.image[0].thumbnail %>" class="dark-img" />
-                          <% } else { %>
-                            <img src="https://res.cloudinary.com/decorelm/image/upload/w_800,h_500,c_fill,pg_1/v1674835556/Decorelm%20Collaboration%20Application/c9e9yovfkhk2fefhbork.jpg" class="dark-img" />
-                          <% } %>
+                          
 
                           <a class="btn view d-block w-50 mx-auto centered" href="<%= design.image[0].url %>"
                             target="_blank">View
