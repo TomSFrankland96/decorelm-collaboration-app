@@ -117,7 +117,7 @@
                       </h4>
                       <a href="<%= design.image[0].url %>" target="_blank">
                         <div class="designImg">
-                          <% if (design.image[0].url !== 'https://decorelm.s3.eu-west-2.amazonaws.com/Master+Bedroom+-+Initial+Design+Presentation.pdf' || 'https://decorelm.s3.eu-west-2.amazonaws.com/Lionel.pdf') { %>
+                          <% if (design.image[0].url !== 'https://decorelm.s3.eu-west-2.amazonaws.com/Master+Bedroom+-+Initial+Design+Presentation.pdf' || design.image[0].url !== 'https://decorelm.s3.eu-west-2.amazonaws.com/Lionel.pdf') { %>
                             <img src="<%= design.image[0].thumbnail %>" class="dark-img" />
                           <% } else { %>
                             <img src="https://res.cloudinary.com/decorelm/image/upload/w_800,h_500,c_fill,pg_1/v1674835556/Decorelm%20Collaboration%20Application/c9e9yovfkhk2fefhbork.jpg" class="dark-img" />
