@@ -42,16 +42,9 @@
                     <div class="form-file custom-file">
                       <input type="file" class="form-file-input" id="image" name="image" required>
                       <label class="form-file-label" for="image">
-                        <span class="form-file-text custom-file-label">Choose image...</span>
+                        <span class="form-file-text custom-file-label">Choose document...</span>
                         <span class="form-file-button">Browse</span>
                       </label>
-                    </div>
-                  </div>
-                  <div class="mb-3">
-                    <label class="form-label" for="notes">Designer Notes</label>
-                    <textarea class="form-control" name="design[notes]" id="name" cols="30" rows="1"></textarea>
-                    <div class="valid-feedback">
-                      Looks good!
                     </div>
                   </div>
                   <button class="btn tan-btn">Submit</button>
@@ -114,14 +107,14 @@
                             href="/projects/<%=project._id%>/rooms/<%= room._id %>/designs/<%= design._id %>/edit">Edit</a>
                           <% } %>
                     </h4>
-                    <a href="<%= design.image[0].url %>" target="_blank">
+                    <a href="https://decorelm.s3.eu-west-2.amazonaws.com/<%= design.document %>" target="_blank">
                       <div class="designImg">
 
                         <img
                           src="https://res.cloudinary.com/decorelm/image/upload/v1676313427/Decorelm_Design_Presentation_knjlr3.png"
                           class="dark-img" />
 
-                        <a class="btn view d-block w-50 mx-auto centered" href="<%= design.image[0].url %>"
+                        <a class="btn view d-block w-50 mx-auto centered" href="https://decorelm.s3.eu-west-2.amazonaws.com/<%= design.document %>"
                           target="_blank">View
                           Design</a>
                       </div>
