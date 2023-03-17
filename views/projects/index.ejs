@@ -1,37 +1,37 @@
 <% layout('layouts/boilerplate')%>
-    <div class="container">
-        <h1 class="my-5">All Projects</h1>
+  <div class="container">
+    <h1 class="my-5">All Projects</h1>
 
 
-        <div class="my-2">
-            <ul>
-                <% if(projects.length > 0) { %> 
-                <% for (let project of projects){%>
-                    <li class="projects-list mx-4 my-2">
-                        <div class="card mb-3 shadow">
-                            <% if( currentUser ) {%>
-                                <div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            <%= project.title %>
-                                        </h5>
-                                        <p class="card-text">
-                                            <small class="text-muted">
-                                                <%= project.location%>
-                                            </small>
-                                        </p>
-                                        <a class="btn tan-btn" href="/projects/<%=project._id%>">View
-                                            <%=project.title%>
-                                        </a>
-                                    </div>
-                                </div>
-                                <% } %>
-                        </div>
-                        <% } %> 
-                    </li>
-                    <% } else {%> 
-                        <p>You don't have any projects yet :(</p>
-                        <% } %> 
-            </ul>
-        </div>
+    <div class="my-2">
+      <ul>
+        <% if(projects.length> 0) { %>
+          <% for (let project of projects){%>
+            <li class="projects-list mx-4 my-2">
+              <div class="card mb-3 shadow">
+                <% if( currentUser ) {%>
+                  <div>
+                    <div class="card-body">
+                      <h5 class="card-title">
+                        <%= project.title %>
+                      </h5>
+                      <p class="card-text">
+                        <small class="text-muted">
+                          <%= project.location%>
+                        </small>
+                      </p>
+                      <a class="btn tan-btn" href="/projects/<%=project._id%>">View
+                        <%=project.title%>
+                      </a>
+                    </div>
+                  </div>
+                  <% } %>
+              </div>
+              <% } %>
+            </li>
+            <% } else {%>
+              <p>You don't have any projects yet :(</p>
+              <% } %>
+      </ul>
     </div>
+  </div>

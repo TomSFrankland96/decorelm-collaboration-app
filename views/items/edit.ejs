@@ -1,58 +1,62 @@
 <% layout('layouts/boilerplate')%>
-    <div class="row">
-        <h1 class="text-center">Edit Item</h1>
-        <div class="col-md-6 offset-md-3 mb-5">
-            <form
-                action="/projects/<%= project._id %>/rooms/<%= room._id %>/item-categories/<%= itemCategory._id %>/items/<%= item._id %>?_method=PUT"
-                method="POST" novalidate class="validated-form">
-                <div class="mb-3">
-                    <label class="form-label" for="name">Item Name</label>
-                    <input class="form-control" name="item[name]" value="<%=item.name %>" id="name" cols="30" rows="1" required></input>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="brand">Brand</label>
-                    <input class="form-control" name="item[brand]" id="brand" cols="30" rows="1" value="<%=item.brand %>" required></input>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="link">Link</label>
-                    <input class="form-control" type="text" id="link" name="item[link]" value="<%=item.link %>" rows="1" required></input>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="price">Price</label>
-                    <div class="input-group">
-                        <span class="input-group-text" id="price-label">£</span>
-                        <input type="text" class="form-control" id="price" placeholder="49.99" aria-label="price"
-                            aria-describedby="price-label" name="item[price]" value="<%=item.price %>">
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="comment">Comments</label>
-                    <input class="form-control" name="item[comment]" id="comment" cols="30" rows="1" value="<%=item.comment %>"></input>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <div class="form-check-inline"> 
-                      <input type="checkbox" id="deleteRecommended" name="item[deleteRecommended]">
-                    </div>
-                    <label for="deleteRecommended">Remove Recommended?</label>
-                  </div>
-                  <!-- <div class="mb-3">
+  <div class="row">
+    <h1 class="text-center">Edit Item</h1>
+    <div class="col-md-6 offset-md-3 mb-5">
+      <form
+        action="/projects/<%= project._id %>/rooms/<%= room._id %>/item-categories/<%= itemCategory._id %>/items/<%= item._id %>?_method=PUT"
+        method="POST" novalidate class="validated-form">
+        <div class="mb-3">
+          <label class="form-label" for="name">Item Name</label>
+          <input class="form-control" name="item[name]" value="<%=item.name %>" id="name" cols="30" rows="1"
+            required></input>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="brand">Brand</label>
+          <input class="form-control" name="item[brand]" id="brand" cols="30" rows="1" value="<%=item.brand %>"
+            required></input>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="link">Link</label>
+          <input class="form-control" type="text" id="link" name="item[link]" value="<%=item.link %>" rows="1"
+            required></input>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="price">Price</label>
+          <div class="input-group">
+            <span class="input-group-text" id="price-label">£</span>
+            <input type="text" class="form-control" id="price" placeholder="49.99" aria-label="price"
+              aria-describedby="price-label" name="item[price]" value="<%=item.price %>">
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="comment">Comments</label>
+          <input class="form-control" name="item[comment]" id="comment" cols="30" rows="1"
+            value="<%=item.comment %>"></input>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="form-check-inline">
+            <input type="checkbox" id="deleteRecommended" name="item[deleteRecommended]">
+          </div>
+          <label for="deleteRecommended">Remove Recommended?</label>
+        </div>
+        <!-- <div class="mb-3">
                     <div class="form-check-inline">
                       <input type="checkbox" id="new" name="item[new]">
                     </div>
                     <label for="new">New?</label>
                   </div> -->
-                <button class="btn tan-btn">Submit</button>
-        </div>
-        </form>
-        <a href="/projects/<%= project._id%>/rooms/<%= room._id %>">Back To Room</a>
-
+        <button class="btn tan-btn">Submit</button>
     </div>
+    </form>
+    <a href="/projects/<%= project._id%>/rooms/<%= room._id %>">Back To Room</a>
+
+  </div>

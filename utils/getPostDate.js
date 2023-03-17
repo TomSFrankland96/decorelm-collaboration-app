@@ -1,30 +1,30 @@
 
 
 function getPostDate() {
-    let date_ob = new Date();
+  let date_ob = new Date();
 
-    // current date
-    // adjust 0 before single digit date
-    let date = ("0" + date_ob.getDate()).slice(-2);
+  // current date
+  // adjust 0 before single digit date
+  let date = ("0" + date_ob.getDate()).slice(-2);
 
-    // current month
-    let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+  // current month
+  let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
 
-    // current year
-    let year = date_ob.getFullYear();
+  // current year
+  let year = date_ob.getFullYear();
 
-    // current hours
-    let hours = date_ob.getHours();
+  // current hours
+  let hours = date_ob.getHours();
 
-    // current minutes
-    let minutes = date_ob.getMinutes();
+  // current minutes
+  let minutes = date_ob.getMinutes();
 
-    let suffix = hours >= 12 ? "PM":"AM";
+  let suffix = hours >= 12 ? "PM" : "AM";
 
-    let minutesFix = minutes < 10 ? "0" + minutes : minutes;
+  let minutesFix = minutes < 10 ? "0" + minutes : minutes;
 
-    // prints date & time in YYYY-MM-DD HH:MM:SS format
-    return(date + "/" + month + "/" + year + " " + hours + ":" + minutesFix + suffix);
+  // prints date & time in YYYY-MM-DD HH:MM:SS format
+  return (date + "/" + month + "/" + year + " " + hours + ":" + minutesFix + suffix);
 
 
 }
